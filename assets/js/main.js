@@ -141,6 +141,22 @@
     });
   });
 
+  /* ---------- «Смотреть весь каталог»: отдельной страницы каталога нет — открываем меню разделов ---------- */
+  document.querySelectorAll('[data-open-catalog]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation(); // иначе общий обработчик клика тут же закроет меню
+      if (nav && nav.offsetParent === null) { // мобильная шапка: каталог — в боковом меню
+        var group = drawer && drawer.querySelector('[data-drawer-catalog]');
+        if (group) group.open = true;
+        openDialog(drawer);
+        return;
+      }
+      var menu = header.classList.contains('is-stuck') ? headerCatalog : document.querySelector('.nav-dd--catalog');
+      if (menu) setOpen(menu, true);
+    });
+  });
+
   /* ---------- Маска телефона +7 (___) ___-__-__ ---------- */
   function phoneDigits(value) {
     var d = value.replace(/\D/g, '');
