@@ -383,29 +383,4 @@
       if (a && a.getAttribute('href').charAt(0) === '#') closeDialog(drawer);
     });
   }
-
-  /* ---------- ДЕМО: выбор шрифта для согласования ---------- */
-  var fontBtns = document.querySelectorAll('[data-font-choice]');
-  function markFont() {
-    var current = doc.dataset.font || 'montserrat';
-    fontBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-font-choice') === current ? 'true' : 'false'); });
-  }
-  fontBtns.forEach(function (b) {
-    b.addEventListener('click', function () {
-      var f = b.getAttribute('data-font-choice');
-      if (f === 'montserrat') delete doc.dataset.font; else doc.dataset.font = f;
-      try { localStorage.setItem('akv-font', f); } catch (err) { /* приватный режим */ }
-      markFont();
-    });
-  });
-  markFont();
-  var fontSwitch = document.querySelector('.font-switch');
-  var fontHide = document.querySelector('[data-font-hide]');
-  try { if (fontSwitch && sessionStorage.getItem('akv-font-hidden')) fontSwitch.hidden = true; } catch (err) { /* приватный режим */ }
-  if (fontHide && fontSwitch) {
-    fontHide.addEventListener('click', function () {
-      fontSwitch.hidden = true;
-      try { sessionStorage.setItem('akv-font-hidden', '1'); } catch (err) { /* приватный режим */ }
-    });
-  }
 })();

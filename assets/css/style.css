@@ -46,8 +46,6 @@
   --header-h: 84px;
   --ease: cubic-bezier(.2, .7, .2, 1);
 }
-html[data-font="manrope"] { --font: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; --fw-h: 700; --ls-h: -0.025em; }
-html[data-font="onest"] { --font: 'Onest', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; --fw-h: 600; --ls-h: -0.02em; }
 
 /* ---------- База ---------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -563,23 +561,6 @@ dialog::backdrop { background: rgba(12, 35, 64, .45); backdrop-filter: blur(3px)
 }
 .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
 
-/* ---------- ДЕМО: переключатель шрифтов ---------- */
-.font-switch {
-  position: fixed; left: 16px; bottom: 16px; z-index: 900; display: flex; align-items: center; gap: 2px; padding: 5px;
-  background: rgba(12, 35, 64, .92); color: #fff; border-radius: 14px; box-shadow: var(--shadow-lg); font: 500 13px/1 system-ui, sans-serif;
-  backdrop-filter: blur(6px);
-}
-.font-switch__label { padding: 0 6px 0 8px; opacity: .7; }
-.font-switch button { padding: 8px 10px; border: 0; border-radius: 10px; background: transparent; color: #fff; font-size: 13px; cursor: pointer; transition: background-color .2s, color .2s; }
-.font-switch button:hover { background: rgba(255, 255, 255, .14); }
-.font-switch button[aria-pressed="true"] { background: #fff; color: var(--ink); }
-.font-switch .font-switch__close { display: grid; place-items: center; width: 30px; height: 30px; padding: 0; margin-left: 2px; opacity: .7; }
-.font-switch .font-switch__close .ico { width: 16px; height: 16px; }
-.font-switch .font-switch__close:hover { opacity: 1; }
-.font-switch [data-font-choice="montserrat"] { font-family: 'Montserrat', sans-serif; }
-.font-switch [data-font-choice="manrope"] { font-family: 'Manrope', sans-serif; }
-.font-switch [data-font-choice="onest"] { font-family: 'Onest', sans-serif; }
-
 /* ---------- Появление блоков при прокрутке ---------- */
 html.js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 html.js .reveal.is-visible { opacity: 1; transform: none; }
@@ -682,8 +663,6 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
   .footer-links { grid-template-columns: 1fr 1fr; }
   .footer-links__col:last-child { grid-column: 1 / -1; }
   .site-footer__bottom { flex-direction: column; }
-  .font-switch { left: 50%; transform: translateX(-50%); bottom: 12px; }
-  .font-switch__label { display: none; }
 }
 
 @media (max-width: 479px) {
@@ -708,5 +687,5 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 }
 
 @media print {
-  .site-header, .site-nav, .topbar, .font-switch, .toast, .map { display: none !important; }
+  .site-header, .site-nav, .topbar, .toast, .map { display: none !important; }
 }
