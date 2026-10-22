@@ -1,4 +1,4 @@
-/* Акватех — скрипты главной страницы. Без зависимостей. */
+/* Акватех — скрипты сайта. Без зависимостей. */
 (function () {
   'use strict';
 
@@ -116,11 +116,27 @@
       btn.addEventListener('click', function () { closeDialog(dlg); });
     });
   });
+  // Кнопка может задать окну свой заголовок, текст кнопки и название заявки в письме:
+  // data-modal-title, data-modal-button, data-modal-form. Без них возвращаются тексты из разметки.
+  function customizeModal(dlg, btn) {
+    var form = dlg.querySelector('[data-lead-form]');
+    [
+      [dlg.querySelector('.modal__title'), 'textContent', btn.dataset.modalTitle],
+      [form && form.querySelector('[type="submit"] span'), 'textContent', btn.dataset.modalButton],
+      [form && form.querySelector('input[name="form"]'), 'value', btn.dataset.modalForm]
+    ].forEach(function (item) {
+      var el = item[0], prop = item[1];
+      if (!el) return;
+      if (!('default' in el.dataset)) el.dataset.default = el[prop];
+      el[prop] = item[2] || el.dataset.default;
+    });
+  }
   document.querySelectorAll('[data-open-modal]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var dlg = document.getElementById(btn.getAttribute('data-open-modal'));
       if (!dlg) return;
       resetLeadForm(dlg.querySelector('[data-lead-form]'));
+      customizeModal(dlg, btn);
       openDialog(dlg);
     });
   });
@@ -356,31 +372,30 @@
     }
   }
 
-  /* ---------- ДЕМО: ссылки на ещё не свёрстанные страницы ---------- */
+  /* ---------- ДЕМО: ссылки на ещё не свёрстанные страницы ----------
+     Готовые страницы связаны относительными ссылками, остальные пока ведут от корня сайта (/category/…) */
+  var DEMO_NOTES = [
+    ['/services/', 'Страницы остальных услуг собираются по шаблону «Ремонт котлов»'],
+    ['/articles/', 'Для примера свёрстана одна статья, остальные добавляются в админке']
+  ];
   if (isDemo) {
     document.addEventListener('click', function (e) {
       var a = e.target.closest('a[href^="/"]');
       if (!a || e.defaultPrevented) return;
-      var href = a.getAttribute('href');
       e.preventDefault();
-      if (href === '/') { window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }); return; }
-      if (href.indexOf('/#') === 0) {
-        var target = document.querySelector(href.slice(1));
-        if (target) target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
-        return;
-      }
-      toast('Эта страница появится на следующем этапе');
+      var href = a.getAttribute('href');
+      var note = DEMO_NOTES.filter(function (n) { return href.indexOf(n[0]) === 0; })[0];
+      toast(note ? note[1] : 'Эта страница появится на следующем этапе');
     });
     document.querySelectorAll('form[role="search"]').forEach(function (f) {
       f.addEventListener('submit', function (e) { e.preventDefault(); toast('Поиск заработает вместе с каталогом'); });
     });
   }
 
-  /* ---------- Закрываем мобильное меню при переходе по якорю ---------- */
+  /* ---------- Мобильное меню закрывается после выбора пункта ---------- */
   if (drawer) {
     drawer.addEventListener('click', function (e) {
-      var a = e.target.closest('a');
-      if (a && a.getAttribute('href').charAt(0) === '#') closeDialog(drawer);
+      if (e.target.closest('a')) closeDialog(drawer);
     });
   }
 })();

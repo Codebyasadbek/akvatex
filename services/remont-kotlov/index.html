@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<!-- Битрикс: всё до <main> — header.php шаблона, после </main> — footer.php -->
+<html lang="ru" data-demo="1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ремонт газовых и электрических котлов в Мариуполе — Акватех</title>
+  <meta name="description" content="Ремонт газовых и электрических котлов любых брендов в Мариуполе: диагностика, замена датчиков, насосов, теплообменников и плат. Выезд в день обращения, цены от 1 000 ₽.">
+  <meta name="theme-color" content="#0A78CC">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ремонт газовых и электрических котлов в Мариуполе — Акватех">
+  <meta property="og:description" content="Ремонт газовых и электрических котлов любых брендов в Мариуполе: диагностика, замена датчиков, насосов, теплообменников и плат. Выезд в день обращения, цены от 1 000 ₽.">
+  <meta property="og:image" content="https://codebyasadbek.github.io/akvatex/assets/img/og-image.jpg">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/montserrat-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="../../assets/img/service-hero.webp" imagesrcset="../../assets/img/service-hero-460.webp 460w, ../../assets/img/service-hero.webp 698w" imagesizes="(max-width: 1023px) calc(100vw - 32px), 560px" fetchpriority="high">
+  <link rel="stylesheet" href="../../assets/css/fonts.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <script>(function(d){d.classList.add('js');setTimeout(function(){if(!window.__akvReady)d.classList.remove('js')},2500)})(document.documentElement)</script>
+  <script src="../../assets/js/main.js" defer></script>
+</head>
+<body>
+
+<!-- SVG-спрайт иконок. Не display:none — иначе не работают градиенты в иконках мессенджеров -->
+<svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+<defs>
+  <linearGradient id="g-tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3CB4EA"/><stop offset="1" stop-color="#1E96D1"/></linearGradient>
+</defs>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4.2-4.2"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.5"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+<symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20.5" r="1.2"/><circle cx="18" cy="20.5" r="1.2"/><path d="M2 2.5h2.6l2.5 12a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 1.95-1.55L21.5 7H5.4"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 15 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+<symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2.5v3.5M16 2.5v3.5"/><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 10h18"/><path d="m9 15.5 2 2 4-4"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h16"/><path d="m13 5 7 7-7 7"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6.5h16M4 12h16M4 17.5h16"/></symbol>
+<symbol id="i-boiler" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="16.5" rx="2"/><rect x="8.5" y="12" width="7" height="3.5" rx="1"/><path d="M9 19v2.5M15 19v2.5M12 19v2.5"/></symbol>
+<symbol id="i-heater" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="17" rx="6"/><circle cx="12" cy="8" r="2"/><path d="M10 19.5v2M14 19.5v2"/></symbol>
+<symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+<symbol id="i-pump" viewBox="0 0 24 24"><circle cx="9.5" cy="13.5" r="5.5"/><circle cx="9.5" cy="13.5" r="1.8"/><path d="M15 13.5h3.5V9.5H21"/><path d="M9.5 8V4.5H6"/><path d="M5 20.5h9"/></symbol>
+<symbol id="i-filter" viewBox="0 0 24 24"><rect x="4" y="5.5" width="5" height="15" rx="1.5"/><rect x="11.5" y="5.5" width="5" height="15" rx="1.5"/><path d="M3 3.5h15M6.5 3.5v2M14 3.5v2M18 3.5h1.5a2 2 0 0 1 2 2V8"/></symbol>
+<symbol id="i-meter" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.5"/><path d="M12 12l2.5-2.5"/><path d="M2.5 12h3M18.5 12h3"/><path d="M9.5 16.5h5"/></symbol>
+<symbol id="i-ups" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2"/><path d="m12.5 6.5-2.5 4.5h4l-2.5 4.5"/><path d="M9 18.5h6"/></symbol>
+<symbol id="i-fan" viewBox="0 0 24 24"><path d="M10.83 16.38a6.08 6.08 0 0 1-8.62-7l5.41 1.45a6.08 6.08 0 0 1 7-8.62l-1.45 5.41a6.08 6.08 0 0 1 8.62 7l-5.41-1.45a6.08 6.08 0 0 1-7 8.62l1.45-5.41Z"/><path d="M12 12v.01"/></symbol>
+<symbol id="i-thermostat" viewBox="0 0 24 24"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/><path d="M12 17.5v.01"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><path d="M3 20.5 5.5 10h13L21 20.5z"/><path d="M4.3 15.5h15.4M9.3 10l-1 10.5M14.7 10l1 10.5"/><path d="M12 2.5v2M7.5 4.5l1 1.2M16.5 4.5l-1 1.2"/></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.9 2.4 17.6a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4"/><path d="M12 17h.01"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M12 16v-4.5"/><path d="M12 8h.01"/></symbol>
+<symbol id="i-power" viewBox="0 0 24 24"><path d="M12 2.5v9"/><path d="M17.7 6.3a8 8 0 1 1-11.4 0"/></symbol>
+<symbol id="i-snowflake" viewBox="0 0 24 24"><path d="M12 2.5v19M3.8 7.25l16.4 9.5M3.8 16.75l16.4-9.5"/><path d="m9.5 4.5 2.5 2 2.5-2M9.5 19.5l2.5-2 2.5 2"/></symbol>
+<symbol id="i-waves" viewBox="0 0 24 24"><path d="M2.5 7q1.6-2 3.2 0t3.2 0t3.2 0t3.2 0t3.2 0t3.2 0"/><path d="M2.5 12q1.6-2 3.2 0t3.2 0t3.2 0t3.2 0t3.2 0t3.2 0"/><path d="M2.5 17q1.6-2 3.2 0t3.2 0t3.2 0t3.2 0t3.2 0t3.2 0"/></symbol>
+<symbol id="i-radiator" viewBox="0 0 24 24"><rect x="3" y="4" width="4.5" height="15" rx="2.25"/><rect x="9.75" y="4" width="4.5" height="15" rx="2.25"/><rect x="16.5" y="4" width="4.5" height="15" rx="2.25"/><path d="M5.25 19v2M18.75 19v2"/></symbol>
+<symbol id="i-gauge" viewBox="0 0 24 24"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></symbol>
+<symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 21.5a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5S5 12.5 5 14.5a7 7 0 0 0 7 7z"/></symbol>
+<symbol id="i-volume" viewBox="0 0 24 24"><path d="M11 5 6.5 9H3v6h3.5l4.5 4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.5 6a8 8 0 0 1 0 12"/></symbol>
+<symbol id="i-receipt" viewBox="0 0 24 24"><path d="M5 2.5h14v19l-2.33-1.4-2.33 1.4-2.34-1.4-2.33 1.4-2.34-1.4L5 21.5z"/><path d="M10 17V7.5h3.2a2.25 2.25 0 0 1 0 4.5H8.5"/><path d="M8.5 14.5h5"/></symbol>
+<!-- MAX: официальная иконка от заказчика (растр 144px, градиент в векторе не повторить) -->
+<symbol id="m-max" viewBox="0 0 40 40"><image href="../../assets/img/max.webp" width="40" height="40"/></symbol>
+<symbol id="m-telegram" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="url(#g-tg)"/><path fill="#fff" transform="translate(4.8 5.6) scale(1.25)" d="M16.906 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></symbol>
+<symbol id="m-whatsapp" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="#25D366"/><path fill="#fff" transform="translate(8 8)" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
+<symbol id="m-viber" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="#7360F2"/><g fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 9.5c-6.3 0-10.2 2.4-10.2 8.7 0 3.5 1.2 5.6 3.4 6.9v4.4l3.7-3.2c1 .2 2 .3 3.1.3 6.3 0 10.2-2.5 10.2-8.4S26.3 9.5 20 9.5z"/><path d="M21.6 14a3.8 3.8 0 0 1 3.2 3.2M21.4 11.9a6 6 0 0 1 5.4 5.4"/></g><path fill="#fff" d="M16.3 13.6c.5-.4 1.1-.3 1.5.2l1 1.4c.3.5.2 1.1-.2 1.4l-.6.5c.4 1.4 1.5 2.6 2.9 3.1l.5-.6c.4-.4 1-.5 1.4-.2l1.4 1c.5.4.6 1 .2 1.5l-.5.6c-.6.7-1.6 1-2.5.6-2.7-1.1-4.6-3.1-5.6-5.8-.3-.9 0-1.9.6-2.4z"/></symbol>
+</svg>
+
+<!-- ============ ШАПКА ============ -->
+<div class="topbar">
+  <div class="container topbar__inner">
+    <span class="topbar__item topbar__item--city"><svg class="ico"><use href="#i-pin"/></svg>Мариуполь</span>
+    <span class="topbar__item"><svg class="ico"><use href="#i-pin"/></svg>ул. Варганова, 10</span>
+    <span class="topbar__item"><svg class="ico"><use href="#i-pin"/></svg>пр. Ильича, 142</span>
+    <span class="topbar__item"><svg class="ico"><use href="#i-pin"/></svg>пр. Победы, 36/21</span>
+    <span class="topbar__item" title="Сервисный центр"><svg class="ico"><use href="#i-wrench"/></svg>ул. Шевченко, 23</span>
+  </div>
+</div>
+
+<header class="site-header" id="site-header">
+  <div class="container site-header__inner">
+    <button class="icon-btn burger" type="button" aria-label="Открыть меню" aria-controls="drawer" aria-expanded="false" data-open-drawer>
+      <svg class="ico"><use href="#i-menu"/></svg>
+    </button>
+
+    <a class="logo" href="../../">
+      <img class="logo__img" src="../../assets/img/logo.webp" width="200" height="42" alt="Акватех">
+      <span class="logo__caption">Центр отопительного оборудования</span>
+    </a>
+
+    <!-- Компактная кнопка каталога: видна, когда шапка «прилипла» при прокрутке. Меню копируется из навигации скриптом -->
+    <div class="nav-dd header-catalog" data-dd>
+      <a class="btn btn--primary btn--sm header-catalog__btn" href="/catalog/" aria-haspopup="true" aria-expanded="false" data-dd-trigger>
+        <svg class="ico"><use href="#i-grid"/></svg><span>Каталог</span>
+      </a>
+    </div>
+
+    <form class="search" action="/search/" method="get" role="search">
+      <input class="search__input" type="search" name="q" placeholder="Название, бренд, артикул" aria-label="Поиск по каталогу" autocomplete="off">
+      <button class="search__btn" type="submit" aria-label="Найти"><svg class="ico"><use href="#i-search"/></svg></button>
+    </form>
+
+    <div class="header-phones">
+      <a class="header-phones__link" href="tel:+79490060061"><svg class="ico"><use href="#i-phone"/></svg>+7 (949) 006-006-1</a>
+      <a class="header-phones__link" href="tel:+79890060061"><svg class="ico"><use href="#i-phone"/></svg>+7 (989) 006-006-1</a>
+    </div>
+
+    <div class="header-msg">
+      <span class="header-msg__label">Напишите нам</span>
+      <div class="messengers messengers--sm">
+  <a class="messenger" href="https://max.ru/" target="_blank" rel="noopener" aria-label="Написать в MAX"><svg><use href="#m-max"/></svg></a>
+  <a class="messenger" href="https://t.me/+79490060061" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg><use href="#m-telegram"/></svg></a>
+  <a class="messenger" href="https://wa.me/79490060061" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg><use href="#m-whatsapp"/></svg></a>
+  <a class="messenger" href="viber://chat?number=%2B79490060061" aria-label="Написать в Viber"><svg><use href="#m-viber"/></svg></a>
+</div>
+
+    </div>
+
+    <div class="header-icons">
+      <a class="icon-btn header-icons__call" href="tel:+79490060061" aria-label="Позвонить"><svg class="ico"><use href="#i-phone"/></svg></a>
+      <a class="icon-btn header-icons__account" href="/personal/" aria-label="Личный кабинет"><svg class="ico"><use href="#i-user"/></svg></a>
+      <a class="icon-btn cart-btn" href="/personal/cart/" aria-label="Корзина"><svg class="ico"><use href="#i-cart"/></svg><span class="cart-btn__count" hidden>0</span></a>
+    </div>
+  </div>
+</header>
+
+<nav class="site-nav" aria-label="Основное меню">
+  <div class="container site-nav__inner">
+    <div class="nav-dd nav-dd--catalog" data-dd>
+      <a class="btn btn--primary site-nav__catalog" href="/catalog/" aria-haspopup="true" aria-expanded="false" data-dd-trigger>
+        <svg class="ico"><use href="#i-grid"/></svg><span>Каталог</span><svg class="ico chev"><use href="#i-chevron-down"/></svg>
+      </a>
+      <div class="dropdown" id="catalog-menu">
+        <ul class="fly">
+          <li class="fly__item">
+            <a class="fly__link" href="/category/kotly/"><svg class="ico fly__icon"><use href="#i-boiler"/></svg><span>Котлы</span><svg class="ico fly__arrow"><use href="#i-chevron-right"/></svg></a>
+            <ul class="fly__sub">
+              <li><a href="/category/kotly-gazovye-nastennye/">Котлы газовые настенные</a></li>
+              <li><a href="/category/kotly-gazovye-napolnye/">Котлы газовые напольные</a></li>
+              <li><a href="/category/kotly-elektricheskie/">Электрические котлы</a></li>
+            </ul>
+          </li>
+          <li class="fly__item">
+            <a class="fly__link" href="/category/vodonagrevateli/"><svg class="ico fly__icon"><use href="#i-heater"/></svg><span>Водонагреватели</span><svg class="ico fly__arrow"><use href="#i-chevron-right"/></svg></a>
+            <ul class="fly__sub">
+              <li><a href="/category/vodonagrevateli-elektricheskie-nakopitelnye/">Электрические накопительные</a></li>
+              <li><a href="/category/kolonki-gazovye/">Колонки газовые</a></li>
+              <li><a href="/category/vodonagrevateli-kombinirovannye/">Комбинированные</a></li>
+            </ul>
+          </li>
+          <li class="fly__item"><a class="fly__link" href="/category/nasosnoe-oborudovanie/"><svg class="ico fly__icon"><use href="#i-pump"/></svg><span>Насосное оборудование</span></a></li>
+          <li class="fly__item"><a class="fly__link" href="/category/sistemy-filtratsii-vody/"><svg class="ico fly__icon"><use href="#i-filter"/></svg><span>Системы фильтрации воды</span></a></li>
+          <li class="fly__item">
+            <a class="fly__link" href="/category/schetchiki-vody/"><svg class="ico fly__icon"><use href="#i-meter"/></svg><span>Счётчики воды</span><svg class="ico fly__arrow"><use href="#i-chevron-right"/></svg></a>
+            <ul class="fly__sub">
+              <li><a href="/category/schetchiki-vody-bytovye/">Бытовые</a></li>
+              <li><a href="/category/schetchiki-vody-promyshlennye/">Промышленные</a></li>
+              <li><a href="/category/schetchiki-vody-mokrokhodnye/">Мокроходные</a></li>
+            </ul>
+          </li>
+          <li class="fly__item">
+            <a class="fly__link" href="/category/ibp-i-stabilizatory/"><svg class="ico fly__icon"><use href="#i-ups"/></svg><span>ИБП и стабилизаторы</span><svg class="ico fly__arrow"><use href="#i-chevron-right"/></svg></a>
+            <ul class="fly__sub">
+              <li><a href="/category/istochniki-bespereboynogo-pitaniya/">Источники бесперебойного питания</a></li>
+              <li><a href="/category/stabilizatory-napryazheniya/">Стабилизаторы напряжения</a></li>
+            </ul>
+          </li>
+          <li class="fly__item"><a class="fly__link" href="/category/rekuperatory/"><svg class="ico fly__icon"><use href="#i-fan"/></svg><span>Рекуператоры</span></a></li>
+          <li class="fly__item"><a class="fly__link" href="/category/termostaty/"><svg class="ico fly__icon"><use href="#i-thermostat"/></svg><span>Термостаты</span></a></li>
+          <li class="fly__item"><a class="fly__link" href="/category/solnechnye-paneli/"><svg class="ico fly__icon"><use href="#i-sun"/></svg><span>Солнечные панели</span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <ul class="site-nav__list">
+      <li class="nav-dd" data-dd>
+        <button class="site-nav__link" type="button" aria-haspopup="true" aria-expanded="false" data-dd-trigger>Услуги<svg class="ico chev"><use href="#i-chevron-down"/></svg></button>
+        <div class="dropdown">
+          <ul class="fly">
+            <li class="fly__item">
+              <span class="fly__link" tabindex="0">Монтаж<svg class="ico fly__arrow"><use href="#i-chevron-right"/></svg></span>
+              <ul class="fly__sub">
+                <li><a href="/services/montazh-kotlov/">Монтаж котлов</a></li>
+                <li><a href="/services/montazh-vodonagrevateley/">Монтаж водонагревателей</a></li>
+                <li><a href="/services/montazh-gazovykh-kolonok/">Монтаж газовых колонок</a></li>
+                <li><a href="/services/montazh-nasosnogo-oborudovaniya/">Монтаж насосного оборудования</a></li>
+                <li><a href="/services/montazh-sistem-filtratsii-vody/">Монтаж систем фильтрации воды</a></li>
+              </ul>
+            </li>
+            <li class="fly__item">
+              <span class="fly__link" tabindex="0">Ремонт<svg class="ico fly__arrow"><use href="#i-chevron-right"/></svg></span>
+              <ul class="fly__sub">
+                <li><a href="../../services/remont-kotlov/" aria-current="page">Ремонт котлов</a></li>
+                <li><a href="/services/remont-vodonagrevateley/">Ремонт водонагревателей</a></li>
+                <li><a href="/services/remont-gazovykh-kolonok/">Ремонт газовых колонок</a></li>
+                <li><a href="/services/remont-nasosnogo-oborudovaniya/">Ремонт насосного оборудования</a></li>
+                <li><a href="/services/remont-sistem-filtratsii-vody/">Ремонт систем фильтрации воды</a></li>
+              </ul>
+            </li>
+            <li class="fly__item">
+              <span class="fly__link" tabindex="0">Обслуживание<svg class="ico fly__arrow"><use href="#i-chevron-right"/></svg></span>
+              <ul class="fly__sub">
+                <li><a href="/services/promyvka-kotlov/">Промывка котлов</a></li>
+                <li><a href="/services/promyvka-gazovykh-kolonok/">Промывка газовых колонок</a></li>
+                <li><a href="/services/promyvka-sistem-otopleniya/">Промывка систем отопления</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li><a class="site-nav__link" href="../../about/">О компании</a></li>
+      <li><a class="site-nav__link" href="../../delivery/">Доставка и оплата</a></li>
+      <li><a class="site-nav__link" href="../../warranty/">Гарантии и возврат</a></li>
+      <li><a class="site-nav__link" href="../../articles/">Статьи</a></li>
+      <li><a class="site-nav__link" href="../../contacts/">Контакты</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="content">
+<!-- Шаблон страницы услуги: блоки можно скрывать и менять местами, тексты, фото, иконки и таблицы редактируются -->
+
+  <!-- ============ 1. ПЕРВЫЙ ЭКРАН ============ -->
+  <section class="page-intro">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Навигационная цепочка"><ol class="breadcrumbs__list"><li><a href="../../">Главная</a></li><li><span>Услуги</span></li><li><span aria-current="page">Ремонт котлов</span></li></ol></nav>
+      <div class="svc-hero">
+        <div class="svc-hero__content">
+          <h1 class="page-title">Ремонт газовых и электрических котлов в Мариуполе</h1>
+          <p>Ремонтируем газовые и электрические котлы любых брендов. Настенные и напольные, одноконтурные и двухконтурные. Поможем, если котёл не включается, плохо греет, протекает или показывает ошибку.</p>
+          <p>Проведём диагностику, определим причину неисправности и отремонтируем отопительное оборудование в кратчайшие сроки по лучшей цене.</p>
+          <div class="svc-hero__actions">
+            <button class="btn btn--primary btn--lg" type="button" data-open-modal="callback" data-modal-title="Вызов мастера" data-modal-button="Оставить заявку" data-modal-form="Вызов мастера — Ремонт котлов">Вызвать мастера<svg class="ico"><use href="#i-arrow-right"/></svg></button>
+          </div>
+        </div>
+        <div class="svc-hero__media">
+          <img src="../../assets/img/service-hero.webp" srcset="../../assets/img/service-hero-460.webp 460w, ../../assets/img/service-hero.webp 698w" sizes="(max-width: 1023px) calc(100vw - 32px), 560px" width="698" height="523" alt="Мастер Акватех ремонтирует газовый котёл" fetchpriority="high">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. ПРЕИМУЩЕСТВА ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head reveal">
+        <h2 class="section__title">Выбирайте Акватех</h2>
+      </div>
+      <ul class="adv reveal">
+        <li class="adv__item"><svg class="ico"><use href="#i-calendar"/></svg><span>Работаем с 2006 года</span></li>
+        <li class="adv__item"><svg class="ico"><use href="#i-shield"/></svg><span>Профессиональный сервис</span></li>
+        <li class="adv__item"><svg class="ico"><use href="#i-receipt"/></svg><span>Прозрачные условия и цены</span></li>
+        <li class="adv__item"><svg class="ico"><use href="#i-truck"/></svg><span>Выезд в день обращения</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 3. НЕИСПРАВНОСТИ ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head reveal">
+        <h2 class="section__title">Распространённые неисправности котлов отопления</h2>
+        <p class="section__lead">Одна и та же неисправность может проявляться по-разному. Расскажите, что происходит с котлом, — точную причину определит мастер при диагностике.</p>
+      </div>
+      <ul class="issues">
+        <li class="issue reveal"><svg class="ico issue__icon"><use href="#i-power"/></svg><div class="issue__body"><h3 class="issue__title">Котёл не включается</h3><p class="issue__text">Не реагирует на включение, не запускает нагрев или сразу отключается.</p></div></li>
+        <li class="issue reveal"><svg class="ico issue__icon"><use href="#i-flame"/></svg><div class="issue__body"><h3 class="issue__title">Не работает розжиг</h3><p class="issue__text">Газовый котёл пытается запуститься, но пламя не появляется или быстро гаснет.</p></div></li>
+        <li class="issue reveal"><svg class="ico issue__icon"><use href="#i-snowflake"/></svg><div class="issue__body"><h3 class="issue__title">Не нагревается вода</h3><p class="issue__text">Из крана идёт холодная или недостаточно горячая вода при работающем котле.</p></div></li>
+        <li class="issue reveal"><svg class="ico issue__icon"><use href="#i-waves"/></svg><div class="issue__body"><h3 class="issue__title">Скачет температура воды</h3><p class="issue__text">Во время использования вода попеременно становится горячей и холодной.</p></div></li>
+        <li class="issue reveal"><svg class="ico issue__icon"><use href="#i-radiator"/></svg><div class="issue__body"><h3 class="issue__title">Плохо работает отопление</h3><p class="issue__text">Котёл не набирает заданную температуру, радиаторы прогреваются слабо.</p></div></li>
+        <li class="issue reveal"><svg class="ico issue__icon"><use href="#i-gauge"/></svg><div class="issue__body"><h3 class="issue__title">Падает или растёт давление</h3><p class="issue__text">Давление регулярно выходит за рабочий диапазон, требуется частая подпитка.</p></div></li>
+        <li class="issue reveal"><svg class="ico issue__icon"><use href="#i-drop"/></svg><div class="issue__body"><h3 class="issue__title">Появилась протечка</h3><p class="issue__text">Вода капает из корпуса котла или в местах соединений.</p></div></li>
+        <li class="issue reveal"><svg class="ico issue__icon"><use href="#i-volume"/></svg><div class="issue__body"><h3 class="issue__title">Котёл шумит</h3><p class="issue__text">Во время работы появились гул, свист, стук или другие непривычные звуки.</p></div></li>
+        <li class="issue reveal"><svg class="ico issue__icon"><use href="#i-thermostat"/></svg><div class="issue__body"><h3 class="issue__title">Котёл перегревается</h3><p class="issue__text">Температура быстро повышается, оборудование отключается или блокируется.</p></div></li>
+        <li class="issue reveal"><svg class="ico issue__icon"><use href="#i-alert"/></svg><div class="issue__body"><h3 class="issue__title">На дисплее появилась ошибка</h3><p class="issue__text">Отображается код неисправности, котёл работает с перебоями или не запускается.</p></div></li>
+      </ul>
+      <p class="section__note reveal"><strong>Не нашли свою проблему в списке?</strong> Опишите её в заявке или отправьте фото дисплея в мессенджере.</p>
+      <div class="contact-bar reveal">
+  <div class="contact-bar__item">
+    <span class="contact-bar__label"><svg class="ico"><use href="#i-phone"/></svg>Позвоните нам</span>
+    <a class="contact-bar__value" href="tel:+79490060061">+7 (949) 006-006-1</a>
+    <a class="contact-bar__value" href="tel:+79890060061">+7 (989) 006-006-1</a>
+  </div>
+  <div class="contact-bar__item">
+    <span class="contact-bar__label">Напишите в мессенджере</span>
+    <div class="messengers">
+  <a class="messenger" href="https://max.ru/" target="_blank" rel="noopener" aria-label="Написать в MAX"><svg><use href="#m-max"/></svg></a>
+  <a class="messenger" href="https://t.me/+79490060061" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg><use href="#m-telegram"/></svg></a>
+  <a class="messenger" href="https://wa.me/79490060061" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg><use href="#m-whatsapp"/></svg></a>
+  <a class="messenger" href="viber://chat?number=%2B79490060061" aria-label="Написать в Viber"><svg><use href="#m-viber"/></svg></a>
+</div>
+
+  </div>
+  <div class="contact-bar__item">
+    <span class="contact-bar__label"><svg class="ico"><use href="#i-mail"/></svg>Электронная почта</span>
+    <a class="contact-bar__value" href="mailto:akva.mariupol@gmail.com">akva.mariupol@gmail.com</a>
+  </div>
+  <button class="btn btn--primary contact-bar__btn" type="button" data-open-modal="callback" data-modal-title="Вызов мастера" data-modal-button="Отправить" data-modal-form="Вызов мастера — Ремонт котлов">Вызвать мастера<svg class="ico"><use href="#i-arrow-right"/></svg></button>
+</div>
+
+    </div>
+  </section>
+
+  <!-- ============ 4. ЦЕНЫ ============ -->
+  <section class="section" id="prices">
+    <div class="container">
+      <div class="section__head reveal">
+        <h2 class="section__title">Цены на ремонт газовых и электрических котлов</h2>
+        <p class="section__lead">Стоимость зависит от модели котла, неисправности и сложности доступа к деталям. В таблице указаны ориентировочные цены на работы. Итоговую сумму согласуем после диагностики, до начала ремонта.</p>
+      </div>
+      <div class="price-table-wrap reveal">
+        <table class="price-table">
+          <thead><tr><th scope="col">Наименование работ</th><th scope="col">Стоимость</th></tr></thead>
+          <tbody>
+            <tr><td>Диагностика котла</td><td>от&nbsp;1&nbsp;000&nbsp;₽</td></tr>
+            <tr><td>Замена датчика температуры, давления или протока</td><td>от&nbsp;1&nbsp;000&nbsp;₽</td></tr>
+            <tr><td>Чистка или замена электрода розжига</td><td>от&nbsp;1&nbsp;000&nbsp;₽</td></tr>
+            <tr><td>Замена прессостата</td><td>от&nbsp;1&nbsp;000&nbsp;₽</td></tr>
+            <tr><td>Замена крана подпитки</td><td>от&nbsp;1&nbsp;000&nbsp;₽</td></tr>
+            <tr><td>Замена предохранительного клапана</td><td>от&nbsp;1&nbsp;000&nbsp;₽</td></tr>
+            <tr><td>Замена циркуляционного насоса</td><td>от&nbsp;2&nbsp;000&nbsp;₽</td></tr>
+            <tr><td>Замена вентилятора</td><td>от&nbsp;2&nbsp;000&nbsp;₽</td></tr>
+            <tr><td>Замена трёхходового клапана</td><td>от&nbsp;2&nbsp;000&nbsp;₽</td></tr>
+            <tr><td>Замена расширительного бака</td><td>от&nbsp;2&nbsp;000&nbsp;₽</td></tr>
+            <tr><td>Замена вторичного теплообменника</td><td>от&nbsp;2&nbsp;000&nbsp;₽</td></tr>
+            <tr><td>Замена первичного теплообменника</td><td>от&nbsp;3&nbsp;000&nbsp;₽</td></tr>
+            <tr><td>Замена газового клапана с настройкой</td><td>от&nbsp;2&nbsp;500&nbsp;₽</td></tr>
+            <tr><td>Замена платы управления</td><td>от&nbsp;2&nbsp;000&nbsp;₽</td></tr>
+            <tr><td>Ремонт платы управления</td><td>от&nbsp;5&nbsp;000&nbsp;₽</td></tr>
+            <tr><td>Замена ТЭНа электрического котла</td><td>от&nbsp;2&nbsp;500&nbsp;₽</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout reveal"><svg class="ico callout__icon"><use href="#i-info"/></svg><p class="callout__text"><strong>Запчасти и расходные материалы оплачиваются отдельно.</strong> Стоимость выезда и условия оплаты диагностики уточняйте при оформлении заявки.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ 5. ФОРМА ВЫЗОВА МАСТЕРА ============ -->
+  <section class="section" id="master">
+  <div class="container">
+    <div class="lead-card lead-card--master lead-card--photo-cover reveal">
+      <div class="lead-card__body">
+        <h2 class="lead-card__title">Нужен мастер? Оставьте заявку</h2>
+        <p class="lead-card__text">Котёл не включается, плохо греет воду или работает с перебоями? Проведём диагностику и определим причину неисправности.</p>
+        <form class="lead-form" action="/ajax/lead.php" method="post" novalidate data-lead-form data-success="Спасибо! Мы свяжемся с вами.">
+  <input type="hidden" name="form" value="Вызов мастера — Ремонт котлов">
+  <div class="lead-form__fields">
+    <label class="field">
+      <span class="field__label">Ваше имя<span class="req">*</span></span>
+      <input class="field__input" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required>
+      <span class="field__error"></span>
+    </label>
+    <label class="field">
+      <span class="field__label">Ваш телефон<span class="req">*</span></span>
+      <input class="field__input" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required data-phone>
+      <span class="field__error"></span>
+    </label>
+  </div>
+  <button class="btn btn--primary btn--lg btn--block" type="submit"><span>Вызвать мастера</span><svg class="ico"><use href="#i-arrow-right"/></svg></button>
+  <label class="consent">
+    <input class="consent__input" type="checkbox" name="consent" required>
+    <span class="consent__box"><svg class="ico"><use href="#i-check"/></svg></span>
+    <span class="consent__text">Я прочитал(а) условия <a href="../../privacy/">политики обработки персональных данных</a> и даю <a href="../../privacy-consent/">согласие на обработку</a> своих персональных данных</span>
+  </label>
+  <span class="field__error field__error--consent"></span>
+  </form>
+
+        <div class="lead-card__messengers">
+          <span>Или свяжитесь с нами в мессенджерах</span>
+          <div class="messengers">
+  <a class="messenger" href="https://max.ru/" target="_blank" rel="noopener" aria-label="Написать в MAX"><svg><use href="#m-max"/></svg></a>
+  <a class="messenger" href="https://t.me/+79490060061" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg><use href="#m-telegram"/></svg></a>
+  <a class="messenger" href="https://wa.me/79490060061" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg><use href="#m-whatsapp"/></svg></a>
+  <a class="messenger" href="viber://chat?number=%2B79490060061" aria-label="Написать в Viber"><svg><use href="#m-viber"/></svg></a>
+</div>
+
+        </div>
+      </div>
+      <div class="lead-card__media"><img src="../../assets/img/service-master.webp" srcset="../../assets/img/service-master-420.webp 420w, ../../assets/img/service-master.webp 630w" sizes="(max-width: 1023px) 100vw, 520px" width="630" height="715" alt="Мастер Акватех в фирменной форме" loading="lazy"></div>
+      </div>
+  </div>
+</section>
+
+
+  <!-- ============ 6. БРЕНДЫ ============ -->
+  <section class="section" id="brands">
+  <div class="container">
+    <div class="section__head reveal">
+      <h2 class="section__title">Мы ремонтируем котлы</h2>
+    </div>
+    <!-- Битрикс: ссылки поведут на категории по производителю -->
+    <ul class="brands brands--lg reveal">
+      <li><a class="brand" href="/brands/vaillant/"><img src="../../assets/img/brands/vaillant.webp" width="320" height="83" style="--bw:180px" alt="Vaillant" loading="lazy"></a></li>
+      <li><a class="brand" href="/brands/ariston/"><img src="../../assets/img/brands/ariston.svg" width="280" height="92" style="--bw:184px" alt="Ariston" loading="lazy"></a></li>
+      <li><a class="brand" href="/brands/viessmann/"><img src="../../assets/img/brands/viessman.webp" width="320" height="68" style="--bw:196px" alt="Viessmann" loading="lazy"></a></li>
+      <li><a class="brand" href="/brands/lemax/"><img src="../../assets/img/brands/lemax.webp" width="144" height="128" style="--bw:92px" alt="Лемакс" loading="lazy"></a></li>
+      <li><a class="brand" href="/brands/immergas/"><img src="../../assets/img/brands/immergas.webp" width="320" height="41" style="--bw:208px" alt="Immergas" loading="lazy"></a></li>
+      <li><a class="brand" href="/brands/hubert/"><img src="../../assets/img/brands/hubert.webp" width="320" height="44" style="--bw:198px" alt="Hubert" loading="lazy"></a></li>
+      <li><a class="brand" href="/brands/chaffoteaux/"><img src="../../assets/img/brands/chaffoteaux.webp" width="320" height="60" style="--bw:198px" alt="Chaffoteaux" loading="lazy"></a></li>
+      <li><a class="brand" href="/brands/demrad/"><img src="../../assets/img/brands/demrad.webp" width="320" height="95" style="--bw:166px" alt="Demrad" loading="lazy"></a></li>
+      <li><a class="brand" href="/brands/mimax/"><img src="../../assets/img/brands/mimax.webp" width="320" height="116" style="--bw:150px" alt="Мимакс" loading="lazy"></a></li>
+      </ul>
+    <p class="section__note reveal">Осуществляем ремонт газовых и электрических котлов различных марок. Не нашли свой бренд? Свяжитесь с нами — уточним возможность диагностики и ремонта.</p>
+    </div>
+</section>
+
+
+  <!-- ============ 7. КАК МЫ РАБОТАЕМ ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head reveal">
+        <h2 class="section__title">Как мы работаем</h2>
+      </div>
+      <ol class="steps steps--2">
+        <li class="step reveal">
+          <h3 class="step__title">Заявка и выезд специалиста</h3>
+          <p class="step__text">Вы сообщаете модель котла и описываете проблему. Мы уточняем детали и согласуем время визита.</p>
+        </li>
+        <li class="step reveal">
+          <h3 class="step__title">Диагностика и согласование стоимости</h3>
+          <p class="step__text">Мастер проверяет оборудование, определяет причину неисправности, озвучивает стоимость и объём работ.</p>
+        </li>
+        <li class="step reveal">
+          <h3 class="step__title">Ремонт</h3>
+          <p class="step__text">Если неисправность можно устранить на месте, ремонтируем сразу. Если потребуется заказать запчасти или доставить оборудование в сервисный центр, согласуем сроки и порядок выполнения работ.</p>
+        </li>
+        <li class="step reveal">
+          <h3 class="step__title">Проверка работы оборудования</h3>
+          <p class="step__text">Проверяем котёл в рабочих режимах, объясняем, на что обратить внимание при дальнейшей эксплуатации, и даём гарантию на выполненные работы.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 8. ВОПРОС-ОТВЕТ ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head reveal">
+        <h2 class="section__title">Ответы на частые вопросы</h2>
+      </div>
+      <div class="faq reveal">
+        <details class="faq__item" open>
+          <summary class="faq__q">Какие котлы вы ремонтируете?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a"><p>Газовые и электрические, настенные и напольные, одноконтурные и двухконтурные. Возможность ремонта конкретной модели уточним при обращении.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__q">Можно ли узнать точную стоимость по телефону?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a"><p>По описанию проблемы можно назвать ориентировочную стоимость. Точная сумма определяется после диагностики: похожие симптомы могут быть вызваны неисправностями разных узлов.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__q">Нужно ли привозить котёл в сервисный центр?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a"><p>Сначала свяжитесь с нами. Согласуем диагностику по месту установки и уточним, потребуется ли передача отдельных узлов в сервисный центр.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__q">Что сообщить при оформлении заявки?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a"><p>Назовите марку и модель котла, опишите неисправность и сообщите код ошибки, если он есть. Фото дисплея и заводской таблички помогут точнее определить оборудование.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__q">Что делать, если для ремонта потребуется запчасть?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a"><p>После диагностики уточним необходимую деталь, её стоимость и доступность. Если потребуется заказ, согласуем сроки дальнейшего ремонта.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__q">Выполняете ли вы гарантийный ремонт?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a"><p>Акватех выполняет гарантийное и послегарантийное обслуживание. Возможность гарантийного ремонта зависит от производителя, модели и условий гарантии. При обращении сообщите дату покупки и подготовьте документы на оборудование.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. ФОРМА: БЕСПЛАТНАЯ ДИАГНОСТИКА ============ -->
+  <section class="section" id="diagnostika">
+  <div class="container">
+    <div class="lead-card lead-card--master lead-card--photo-contain reveal">
+      <div class="lead-card__body">
+        <h2 class="lead-card__title">Закажите бесплатную диагностику</h2>
+        <p class="lead-card__text">Котёл работает с перебоями или перестал греть? Оставьте заявку — мы свяжемся с вами, уточним проблему и согласуем дальнейшие действия.</p>
+        <form class="lead-form" action="/ajax/lead.php" method="post" novalidate data-lead-form data-success="Спасибо! Мы свяжемся с вами.">
+  <input type="hidden" name="form" value="Бесплатная диагностика — Ремонт котлов">
+  <div class="lead-form__fields">
+    <label class="field">
+      <span class="field__label">Ваше имя<span class="req">*</span></span>
+      <input class="field__input" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required>
+      <span class="field__error"></span>
+    </label>
+    <label class="field">
+      <span class="field__label">Ваш телефон<span class="req">*</span></span>
+      <input class="field__input" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required data-phone>
+      <span class="field__error"></span>
+    </label>
+  </div>
+  <button class="btn btn--primary btn--lg btn--block" type="submit"><span>Вызвать мастера</span><svg class="ico"><use href="#i-arrow-right"/></svg></button>
+  <label class="consent">
+    <input class="consent__input" type="checkbox" name="consent" required>
+    <span class="consent__box"><svg class="ico"><use href="#i-check"/></svg></span>
+    <span class="consent__text">Я прочитал(а) условия <a href="../../privacy/">политики обработки персональных данных</a> и даю <a href="../../privacy-consent/">согласие на обработку</a> своих персональных данных</span>
+  </label>
+  <span class="field__error field__error--consent"></span>
+  </form>
+
+        <div class="lead-card__messengers">
+          <span>Или свяжитесь с нами в мессенджерах</span>
+          <div class="messengers">
+  <a class="messenger" href="https://max.ru/" target="_blank" rel="noopener" aria-label="Написать в MAX"><svg><use href="#m-max"/></svg></a>
+  <a class="messenger" href="https://t.me/+79490060061" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg><use href="#m-telegram"/></svg></a>
+  <a class="messenger" href="https://wa.me/79490060061" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg><use href="#m-whatsapp"/></svg></a>
+  <a class="messenger" href="viber://chat?number=%2B79490060061" aria-label="Написать в Viber"><svg><use href="#m-viber"/></svg></a>
+</div>
+
+        </div>
+      </div>
+      <div class="lead-card__media"><img src="../../assets/img/service-equipment.webp" srcset="../../assets/img/service-equipment-560.webp 560w, ../../assets/img/service-equipment.webp 850w" sizes="(max-width: 1023px) 420px, 600px" width="850" height="716" alt="Котлы, водонагреватели, насос и фильтр для воды" loading="lazy"></div>
+      </div>
+  </div>
+</section>
+
+
+  <!-- ============ 10. АДРЕСА ============ -->
+  <section class="section" id="stores">
+  <div class="container">
+    <div class="section__head reveal">
+      <h2 class="section__title">Наши адреса</h2>
+    </div>
+    <ul class="stores">
+      <li class="store-card store-card--service reveal">
+  <h3 class="store-card__title">Сервисный центр</h3>
+  <p class="store-card__row"><svg class="ico"><use href="#i-wrench"/></svg><span>г. Мариуполь,<br>ул. Шевченко, 23</span></p>
+  <a class="store-card__row store-card__phone" href="tel:+79498002020"><svg class="ico"><use href="#i-phone"/></svg>+7 (949) 800-20-20</a>
+</li>
+
+      <li class="store-card reveal">
+        <h3 class="store-card__title">Магазин на Варганова</h3>
+        <p class="store-card__row"><svg class="ico"><use href="#i-pin"/></svg><span>г. Мариуполь,<br>ул. Варганова, 10</span></p>
+        <a class="store-card__row store-card__phone" href="tel:+79494003030"><svg class="ico"><use href="#i-phone"/></svg>+7 (949) 400-30-30</a>
+      </li>
+      <li class="store-card reveal">
+        <h3 class="store-card__title">Магазин на проспекте Ильича</h3>
+        <p class="store-card__row"><svg class="ico"><use href="#i-pin"/></svg><span>г. Мариуполь,<br>проспект Ильича, 142</span></p>
+        <a class="store-card__row store-card__phone" href="tel:+79492895169"><svg class="ico"><use href="#i-phone"/></svg>+7 (949) 289-51-69</a>
+      </li>
+      <li class="store-card reveal">
+        <h3 class="store-card__title">Магазин на проспекте Победы</h3>
+        <p class="store-card__row"><svg class="ico"><use href="#i-pin"/></svg><span>г. Мариуполь,<br>проспект Победы, 36/21</span></p>
+        <a class="store-card__row store-card__phone" href="tel:+79493600061"><svg class="ico"><use href="#i-phone"/></svg>+7 (949) 360-00-61</a>
+      </li>
+      </ul>
+
+    <!-- Яндекс.Карта подключается скриптом, когда блок появляется на экране -->
+    <div class="map reveal" id="stores-map" data-points='[
+      {"c":[47.0986348,37.5415516],"t":"Варганова, 10"},
+      {"c":[47.1395938,37.5679005],"t":"Ильича, 142"},
+      {"c":[47.1077573,37.6377505],"t":"Победы, 36/21","left":true},
+      {"c":[47.1087480,37.5460350],"t":"Шевченко, 23 · Сервис","short":"Сервис","addr":"Шевченко, 23","service":true}
+    ]'>
+      <div class="map__placeholder"><svg class="ico"><use href="#i-pin"/></svg>Загружаем карту…</div>
+    </div>
+
+    <div class="contact-bar reveal">
+  <div class="contact-bar__item">
+    <span class="contact-bar__label"><svg class="ico"><use href="#i-phone"/></svg>Позвоните нам</span>
+    <a class="contact-bar__value" href="tel:+79490060061">+7 (949) 006-006-1</a>
+    <a class="contact-bar__value" href="tel:+79890060061">+7 (989) 006-006-1</a>
+  </div>
+  <div class="contact-bar__item">
+    <span class="contact-bar__label">Напишите в мессенджере</span>
+    <div class="messengers">
+  <a class="messenger" href="https://max.ru/" target="_blank" rel="noopener" aria-label="Написать в MAX"><svg><use href="#m-max"/></svg></a>
+  <a class="messenger" href="https://t.me/+79490060061" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg><use href="#m-telegram"/></svg></a>
+  <a class="messenger" href="https://wa.me/79490060061" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg><use href="#m-whatsapp"/></svg></a>
+  <a class="messenger" href="viber://chat?number=%2B79490060061" aria-label="Написать в Viber"><svg><use href="#m-viber"/></svg></a>
+</div>
+
+  </div>
+  <div class="contact-bar__item">
+    <span class="contact-bar__label"><svg class="ico"><use href="#i-mail"/></svg>Электронная почта</span>
+    <a class="contact-bar__value" href="mailto:akva.mariupol@gmail.com">akva.mariupol@gmail.com</a>
+  </div>
+  <button class="btn btn--primary contact-bar__btn" type="button" data-open-modal="callback">Перезвоните мне<svg class="ico"><use href="#i-arrow-right"/></svg></button>
+</div>
+
+  </div>
+</section>
+
+
+</main>
+
+<!-- ============ ПОДВАЛ ============ -->
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <nav class="footer-links" aria-label="Разделы сайта">
+      <div class="footer-links__col">
+        <h3 class="footer-links__title">Компания</h3>
+        <ul>
+          <li><a href="/catalog/">Каталог</a></li>
+          <li><a href="../../#services">Услуги</a></li>
+          <li><a href="../../about/">О компании</a></li>
+          <li><a href="../../contacts/">Контакты</a></li>
+          <li><a href="../../articles/">Статьи</a></li>
+        </ul>
+      </div>
+      <div class="footer-links__col">
+        <h3 class="footer-links__title">Покупателям</h3>
+        <ul>
+          <li><a href="../../delivery/">Оплата и доставка</a></li>
+          <li><a href="../../warranty/">Гарантии и возврат</a></li>
+        </ul>
+      </div>
+      <div class="footer-links__col">
+        <h3 class="footer-links__title">Информация</h3>
+        <ul>
+          <li><a href="../../usloviya-raboty-dogovor-oferta/">Условия работы (договор-оферта)</a></li>
+          <li><a href="../../privacy/">Политика обработки персональных данных</a></li>
+          <li><a href="../../privacy-consent/">Согласие на обработку персональных данных</a></li>
+          <li><a href="../../cookie/">Политика использования файлов cookie</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="footer-contacts">
+      <a class="logo logo--footer" href="../../">
+        <img class="logo__img" src="../../assets/img/logo.webp" width="220" height="46" alt="Акватех" loading="lazy">
+        <span class="logo__caption">Центр отопительного оборудования</span>
+      </a>
+      <ul class="footer-contacts__list">
+        <li><svg class="ico"><use href="#i-phone"/></svg><span><a href="tel:+79490060061">+7 (949) 006-006-1</a><br><a href="tel:+79890060061">+7 (989) 006-006-1</a></span></li>
+        <li class="footer-contacts__messengers">
+          <div class="messengers messengers--sm">
+  <a class="messenger" href="https://max.ru/" target="_blank" rel="noopener" aria-label="Написать в MAX"><svg><use href="#m-max"/></svg></a>
+  <a class="messenger" href="https://t.me/+79490060061" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg><use href="#m-telegram"/></svg></a>
+  <a class="messenger" href="https://wa.me/79490060061" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg><use href="#m-whatsapp"/></svg></a>
+  <a class="messenger" href="viber://chat?number=%2B79490060061" aria-label="Написать в Viber"><svg><use href="#m-viber"/></svg></a>
+</div>
+
+        </li>
+        <li><svg class="ico"><use href="#i-mail"/></svg><a href="mailto:akva.mariupol@gmail.com">akva.mariupol@gmail.com</a></li>
+        <li><svg class="ico"><use href="#i-pin"/></svg><span>г. Мариуполь, ул. Варганова, 10</span></li>
+        <li><svg class="ico"><use href="#i-pin"/></svg><span>г. Мариуполь, пр. Ильича, 142</span></li>
+        <li><svg class="ico"><use href="#i-pin"/></svg><span>г. Мариуполь, пр. Победы, 36/21</span></li>
+        <li><svg class="ico"><use href="#i-wrench"/></svg><span>Сервисный центр: г.&nbsp;Мариуполь, ул.&nbsp;Шевченко,&nbsp;23</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container site-footer__bottom">
+    <span>© Акватех, 2026</span>
+    <span>ИП Обозный Андрей Александрович</span>
+    <span>ИНН 615437713276</span>
+    <span>ОГРНИП 323930100209095</span>
+  </div>
+</footer>
+
+<!-- ============ МОБИЛЬНОЕ МЕНЮ ============ -->
+<dialog class="drawer" id="drawer" aria-label="Меню">
+  <div class="drawer__head">
+    <a class="logo" href="../../"><img class="logo__img" src="../../assets/img/logo.webp" width="150" height="32" alt="Акватех"></a>
+    <button class="icon-btn" type="button" aria-label="Закрыть меню" data-close-dialog autofocus><svg class="ico"><use href="#i-close"/></svg></button>
+  </div>
+  <div class="drawer__body">
+    <form class="search search--drawer" action="/search/" method="get" role="search">
+      <input class="search__input" type="search" name="q" placeholder="Название, бренд, артикул" aria-label="Поиск по каталогу">
+      <button class="search__btn" type="submit" aria-label="Найти"><svg class="ico"><use href="#i-search"/></svg></button>
+    </form>
+    <nav class="drawer-nav" aria-label="Меню">
+      <details class="drawer-nav__group">
+        <summary><svg class="ico"><use href="#i-grid"/></svg>Каталог<svg class="ico chev"><use href="#i-chevron-down"/></svg></summary>
+        <ul>
+          <li><a href="/category/kotly/">Котлы</a></li>
+          <li><a href="/category/vodonagrevateli/">Водонагреватели</a></li>
+          <li><a href="/category/kolonki-gazovye/">Газовые колонки</a></li>
+          <li><a href="/category/nasosnoe-oborudovanie/">Насосное оборудование</a></li>
+          <li><a href="/category/sistemy-filtratsii-vody/">Системы фильтрации воды</a></li>
+          <li><a href="/category/schetchiki-vody/">Счётчики воды</a></li>
+          <li><a href="/category/ibp-i-stabilizatory/">ИБП и стабилизаторы</a></li>
+          <li><a href="/category/rekuperatory/">Рекуператоры</a></li>
+          <li><a href="/category/termostaty/">Термостаты</a></li>
+          <li><a href="/category/solnechnye-paneli/">Солнечные панели</a></li>
+        </ul>
+      </details>
+      <details class="drawer-nav__group">
+        <summary><svg class="ico"><use href="#i-wrench"/></svg>Услуги<svg class="ico chev"><use href="#i-chevron-down"/></svg></summary>
+        <p class="drawer-nav__caption">Монтаж</p>
+        <ul>
+          <li><a href="/services/montazh-kotlov/">Монтаж котлов</a></li>
+          <li><a href="/services/montazh-vodonagrevateley/">Монтаж водонагревателей</a></li>
+          <li><a href="/services/montazh-gazovykh-kolonok/">Монтаж газовых колонок</a></li>
+          <li><a href="/services/montazh-nasosnogo-oborudovaniya/">Монтаж насосного оборудования</a></li>
+          <li><a href="/services/montazh-sistem-filtratsii-vody/">Монтаж систем фильтрации воды</a></li>
+        </ul>
+        <p class="drawer-nav__caption">Ремонт</p>
+        <ul>
+          <li><a href="../../services/remont-kotlov/" aria-current="page">Ремонт котлов</a></li>
+          <li><a href="/services/remont-vodonagrevateley/">Ремонт водонагревателей</a></li>
+          <li><a href="/services/remont-gazovykh-kolonok/">Ремонт газовых колонок</a></li>
+          <li><a href="/services/remont-nasosnogo-oborudovaniya/">Ремонт насосного оборудования</a></li>
+          <li><a href="/services/remont-sistem-filtratsii-vody/">Ремонт систем фильтрации воды</a></li>
+        </ul>
+        <p class="drawer-nav__caption">Обслуживание</p>
+        <ul>
+          <li><a href="/services/promyvka-kotlov/">Промывка котлов</a></li>
+          <li><a href="/services/promyvka-gazovykh-kolonok/">Промывка газовых колонок</a></li>
+          <li><a href="/services/promyvka-sistem-otopleniya/">Промывка систем отопления</a></li>
+        </ul>
+      </details>
+      <a class="drawer-nav__link" href="../../about/">О компании</a>
+      <a class="drawer-nav__link" href="../../delivery/">Доставка и оплата</a>
+      <a class="drawer-nav__link" href="../../warranty/">Гарантии и возврат</a>
+      <a class="drawer-nav__link" href="../../articles/">Статьи</a>
+      <a class="drawer-nav__link" href="../../contacts/">Контакты</a>
+    </nav>
+    <div class="drawer__contacts">
+      <a class="drawer__phone" href="tel:+79490060061">+7 (949) 006-006-1</a>
+      <a class="drawer__phone" href="tel:+79890060061">+7 (989) 006-006-1</a>
+      <div class="messengers">
+  <a class="messenger" href="https://max.ru/" target="_blank" rel="noopener" aria-label="Написать в MAX"><svg><use href="#m-max"/></svg></a>
+  <a class="messenger" href="https://t.me/+79490060061" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg><use href="#m-telegram"/></svg></a>
+  <a class="messenger" href="https://wa.me/79490060061" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg><use href="#m-whatsapp"/></svg></a>
+  <a class="messenger" href="viber://chat?number=%2B79490060061" aria-label="Написать в Viber"><svg><use href="#m-viber"/></svg></a>
+</div>
+
+      <ul class="drawer__addresses">
+        <li><svg class="ico"><use href="#i-pin"/></svg>ул. Варганова, 10</li>
+        <li><svg class="ico"><use href="#i-pin"/></svg>пр. Ильича, 142</li>
+        <li><svg class="ico"><use href="#i-pin"/></svg>пр. Победы, 36/21</li>
+        <li><svg class="ico"><use href="#i-wrench"/></svg>ул. Шевченко, 23 — сервис</li>
+      </ul>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============ ВСПЛЫВАЮЩАЯ ФОРМА ============ -->
+<!-- Одна на все кнопки «Перезвоните мне» / «Вызвать мастера»: заголовок, текст кнопки и название заявки задают data-атрибуты кнопки -->
+<dialog class="modal" id="callback" aria-labelledby="callback-title">
+  <button class="icon-btn modal__close" type="button" aria-label="Закрыть" data-close-dialog autofocus><svg class="ico"><use href="#i-close"/></svg></button>
+  <h2 class="modal__title" id="callback-title">Перезвоним вам</h2>
+  <p class="modal__text">Оставьте имя и телефон — свяжемся с вами в ближайшее время.</p>
+  <form class="lead-form" action="/ajax/lead.php" method="post" novalidate data-lead-form data-success="Спасибо! Мы скоро свяжемся с вами.">
+  <input type="hidden" name="form" value="Перезвоните мне">
+  <div class="lead-form__fields lead-form__fields--stack">
+    <label class="field">
+      <span class="field__label">Ваше имя<span class="req">*</span></span>
+      <input class="field__input" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required>
+      <span class="field__error"></span>
+    </label>
+    <label class="field">
+      <span class="field__label">Ваш телефон<span class="req">*</span></span>
+      <input class="field__input" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required data-phone>
+      <span class="field__error"></span>
+    </label>
+  </div>
+  <label class="consent">
+    <input class="consent__input" type="checkbox" name="consent" required>
+    <span class="consent__box"><svg class="ico"><use href="#i-check"/></svg></span>
+    <span class="consent__text">Я прочитал(а) условия <a href="../../privacy/">политики обработки персональных данных</a> и даю <a href="../../privacy-consent/">согласие на обработку</a> своих персональных данных</span>
+  </label>
+  <span class="field__error field__error--consent"></span>
+  <button class="btn btn--primary btn--lg btn--block" type="submit"><span>Отправить</span><svg class="ico"><use href="#i-arrow-right"/></svg></button>
+  </form>
+
+</dialog>
+
+<div class="toast" role="status" aria-live="polite" hidden></div>
+
+</body>
+</html>
