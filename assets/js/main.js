@@ -373,10 +373,17 @@
   }
 
   /* ---------- ДЕМО: ссылки на ещё не свёрстанные страницы ----------
-     Готовые страницы связаны относительными ссылками, остальные пока ведут от корня сайта (/category/…) */
+     Готовые страницы связаны относительными ссылками, остальные пока ведут от корня сайта (/category/…).
+     Более точный адрес — выше в списке */
   var DEMO_NOTES = [
     ['/services/', 'Страницы остальных услуг собираются по шаблону «Ремонт котлов»'],
-    ['/articles/', 'Для примера свёрстана одна статья, остальные добавляются в админке']
+    ['/articles/', 'Для примера свёрстана одна статья, остальные добавляются в админке'],
+    ['/category/', 'Для примера свёрстаны «Водонагреватели» и «Котлы газовые настенные», остальные разделы — по тому же шаблону'],
+    ['/catalog/', 'Отдельной страницы каталога нет: разделы открываются из меню «Каталог»'],
+    ['/product/', 'Для примера свёрстана карточка котла Ariston ARGIS C, остальные товары — по тому же шаблону'],
+    ['/upload/', 'Документы загружаются в админке и открываются в новом окне'],
+    ['/personal/order/payment/', 'Оплата картой заработает после подключения платёжной системы'],
+    ['/personal/', 'Личный кабинет заработает в Битриксе: он создаётся автоматически после первого заказа']
   ];
   if (isDemo) {
     document.addEventListener('click', function (e) {
@@ -387,10 +394,38 @@
       var note = DEMO_NOTES.filter(function (n) { return href.indexOf(n[0]) === 0; })[0];
       toast(note ? note[1] : 'Эта страница появится на следующем этапе');
     });
-    document.querySelectorAll('form[role="search"]').forEach(function (f) {
-      f.addEventListener('submit', function (e) { e.preventDefault(); toast('Поиск заработает вместе с каталогом'); });
+  }
+
+  /* ---------- Счётчик корзины в шапке ----------
+     ДЕМО: корзина хранится в браузере (её ведёт shop.js). В Битриксе число выводит компонент sale.basket.basket.line */
+  var CART_KEY = 'akv-cart';
+  function cartCount() {
+    try {
+      var items = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+      return Array.isArray(items) ? items.reduce(function (n, i) { return n + (Number(i.qty) || 0); }, 0) : 0;
+    } catch (e) { return 0; }
+  }
+  function updateCartBadge() {
+    var n = cartCount();
+    document.querySelectorAll('.cart-btn__count').forEach(function (badge) {
+      badge.textContent = n > 99 ? '99+' : String(n);
+      badge.hidden = !n;
     });
   }
+  updateCartBadge();
+  document.addEventListener('cart:change', updateCartBadge);
+  window.addEventListener('storage', function (e) { if (e.key === CART_KEY) updateCartBadge(); });
+
+  /* ---------- Общие функции для скриптов страниц (shop.js) ---------- */
+  window.akv = {
+    toast: toast,
+    openDialog: openDialog,
+    closeDialog: closeDialog,
+    phoneDigits: phoneDigits,
+    setFieldError: setFieldError,
+    cartKey: CART_KEY,
+    reduceMotion: reduceMotion
+  };
 
   /* ---------- Мобильное меню закрывается после выбора пункта ---------- */
   if (drawer) {

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" font-family="Arial, Helvetica, sans-serif">
+  <title>Габаритная схема котла Ariston ARGIS C, мм</title>
+  <rect width="600" height="800" fill="#fff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#0A78CC"/>
+    </marker>
+  </defs>
+  <g fill="#F4F9FE" stroke="#33465E" stroke-width="3" stroke-linejoin="round">
+    <!-- вид спереди: 400 × 700 -->
+    <rect x="96" y="200" width="240" height="420" rx="10"/>
+    <rect x="128" y="520" width="176" height="64" rx="8" fill="#fff"/>
+    <!-- вид сбоку: 315 × 700 -->
+    <rect x="392" y="200" width="189" height="420" rx="10"/>
+  </g>
+  <g fill="none" stroke="#33465E" stroke-width="2.5" stroke-linecap="round">
+    <circle cx="156" cy="552" r="14"/>
+    <rect x="190" y="538" width="56" height="28" rx="4"/>
+    <circle cx="276" cy="552" r="12"/>
+    <path d="M140 620v26M180 620v26M252 620v26M292 620v26M214 200v-22"/>
+    <path d="M420 620v26M553 620v26"/>
+  </g>
+  <g stroke="#0A78CC" stroke-width="2" fill="none">
+    <path d="M96 188V128M336 188V128M392 188V128M581 188V128M84 200H40M84 620H40" stroke-dasharray="4 5"/>
+    <path d="M100 148h232M396 148h181M60 204v412" marker-start="url(#a)" marker-end="url(#a)"/>
+  </g>
+  <g fill="#0C2340" font-size="26" font-weight="700" text-anchor="middle">
+    <text x="216" y="138">400</text>
+    <text x="486" y="138">315</text>
+    <text x="44" y="410" transform="rotate(-90 44 410)">700</text>
+  </g>
+  <g fill="#5E7085" font-size="20" text-anchor="middle">
+    <text x="216" y="700">Вид спереди</text>
+    <text x="486" y="700">Вид сбоку</text>
+  </g>
+</svg>

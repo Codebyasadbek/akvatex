@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="./assets/css/style.css">
   <script>(function(d){d.classList.add('js');setTimeout(function(){if(!window.__akvReady)d.classList.remove('js')},2500)})(document.documentElement)</script>
   <script src="./assets/js/main.js" defer></script>
-</head>
+  </head>
 <body>
 
 <!-- SVG-спрайт иконок. Не display:none — иначе не работают градиенты в иконках мессенджеров -->
@@ -86,7 +86,7 @@
       </a>
     </div>
 
-    <form class="search" action="/search/" method="get" role="search">
+    <form class="search" action="./search/" method="get" role="search">
       <input class="search__input" type="search" name="q" placeholder="Название, бренд, артикул" aria-label="Поиск по каталогу" autocomplete="off">
       <button class="search__btn" type="submit" aria-label="Найти"><svg class="ico"><use href="#i-search"/></svg></button>
     </form>
@@ -110,7 +110,7 @@
     <div class="header-icons">
       <a class="icon-btn header-icons__call" href="tel:+79490060061" aria-label="Позвонить"><svg class="ico"><use href="#i-phone"/></svg></a>
       <a class="icon-btn header-icons__account" href="/personal/" aria-label="Личный кабинет"><svg class="ico"><use href="#i-user"/></svg></a>
-      <a class="icon-btn cart-btn" href="/personal/cart/" aria-label="Корзина"><svg class="ico"><use href="#i-cart"/></svg><span class="cart-btn__count" hidden>0</span></a>
+      <a class="icon-btn cart-btn" href="./personal/cart/" aria-label="Корзина"><svg class="ico"><use href="#i-cart"/></svg><span class="cart-btn__count" hidden>0</span></a>
     </div>
   </div>
 </header>
@@ -126,13 +126,13 @@
           <li class="fly__item">
             <a class="fly__link" href="/category/kotly/"><svg class="ico fly__icon"><use href="#i-boiler"/></svg><span>Котлы</span><svg class="ico fly__arrow"><use href="#i-chevron-right"/></svg></a>
             <ul class="fly__sub">
-              <li><a href="/category/kotly-gazovye-nastennye/">Котлы газовые настенные</a></li>
+              <li><a href="./category/kotly-gazovye-nastennye/">Котлы газовые настенные</a></li>
               <li><a href="/category/kotly-gazovye-napolnye/">Котлы газовые напольные</a></li>
               <li><a href="/category/kotly-elektricheskie/">Электрические котлы</a></li>
             </ul>
           </li>
           <li class="fly__item">
-            <a class="fly__link" href="/category/vodonagrevateli/"><svg class="ico fly__icon"><use href="#i-heater"/></svg><span>Водонагреватели</span><svg class="ico fly__arrow"><use href="#i-chevron-right"/></svg></a>
+            <a class="fly__link" href="./category/vodonagrevateli/"><svg class="ico fly__icon"><use href="#i-heater"/></svg><span>Водонагреватели</span><svg class="ico fly__arrow"><use href="#i-chevron-right"/></svg></a>
             <ul class="fly__sub">
               <li><a href="/category/vodonagrevateli-elektricheskie-nakopitelnye/">Электрические накопительные</a></li>
               <li><a href="/category/kolonki-gazovye/">Колонки газовые</a></li>
@@ -214,7 +214,7 @@
       <p class="error-page__code" aria-hidden="true">404</p>
       <h1 class="page-title">Страница не найдена</h1>
       <p class="error-page__text">Возможно, ссылка устарела или в адресе есть опечатка. Начните с главной страницы или найдите оборудование через поиск.</p>
-      <form class="search error-page__search" action="/search/" method="get" role="search">
+      <form class="search error-page__search" action="./search/" method="get" role="search">
         <input class="search__input" type="search" name="q" placeholder="Название, бренд, артикул" aria-label="Поиск по каталогу">
         <button class="search__btn" type="submit" aria-label="Найти"><svg class="ico"><use href="#i-search"/></svg></button>
       </form>
@@ -224,7 +224,7 @@
       </div>
       <nav class="error-page__links" aria-label="Популярные разделы">
         <a href="/category/kotly/">Котлы</a>
-        <a href="/category/vodonagrevateli/">Водонагреватели</a>
+        <a href="./category/vodonagrevateli/">Водонагреватели</a>
         <a href="./services/remont-kotlov/">Ремонт котлов</a>
         <a href="./delivery/">Доставка и оплата</a>
         <a href="./contacts/">Контакты</a>
@@ -305,7 +305,7 @@
     <button class="icon-btn" type="button" aria-label="Закрыть меню" data-close-dialog autofocus><svg class="ico"><use href="#i-close"/></svg></button>
   </div>
   <div class="drawer__body">
-    <form class="search search--drawer" action="/search/" method="get" role="search">
+    <form class="search search--drawer" action="./search/" method="get" role="search">
       <input class="search__input" type="search" name="q" placeholder="Название, бренд, артикул" aria-label="Поиск по каталогу">
       <button class="search__btn" type="submit" aria-label="Найти"><svg class="ico"><use href="#i-search"/></svg></button>
     </form>
@@ -314,7 +314,7 @@
         <summary><svg class="ico"><use href="#i-grid"/></svg>Каталог<svg class="ico chev"><use href="#i-chevron-down"/></svg></summary>
         <ul>
           <li><a href="/category/kotly/">Котлы</a></li>
-          <li><a href="/category/vodonagrevateli/">Водонагреватели</a></li>
+          <li><a href="./category/vodonagrevateli/">Водонагреватели</a></li>
           <li><a href="/category/kolonki-gazovye/">Газовые колонки</a></li>
           <li><a href="/category/nasosnoe-oborudovanie/">Насосное оборудование</a></li>
           <li><a href="/category/sistemy-filtratsii-vody/">Системы фильтрации воды</a></li>

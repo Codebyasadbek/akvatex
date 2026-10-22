@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<!-- Битрикс: всё до <main> — header.php шаблона, после </main> — footer.php -->
+<html lang="ru" data-demo="1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Поиск по каталогу — Акватех</title>
+  <meta name="description" content="Поиск оборудования в каталоге Акватех по названию, бренду или артикулу.">
+  <meta name="theme-color" content="#0A78CC">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Поиск по каталогу — Акватех">
+  <meta property="og:description" content="Поиск оборудования в каталоге Акватех по названию, бренду или артикулу.">
+  <meta property="og:image" content="https://codebyasadbek.github.io/akvatex/assets/img/og-image.jpg">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../assets/fonts/montserrat-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="../assets/css/fonts.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/shop.css">
+  <script>(function(d){d.classList.add('js');setTimeout(function(){if(!window.__akvReady)d.classList.remove('js')},2500)})(document.documentElement)</script>
+  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/shop.js" defer></script>
+</head>
+<body>
+
+<!-- SVG-спрайт иконок. Не display:none — иначе не работают градиенты в иконках мессенджеров -->
+<svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+<defs>
+  <linearGradient id="g-tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3CB4EA"/><stop offset="1" stop-color="#1E96D1"/></linearGradient>
+</defs>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4.2-4.2"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.5"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+<symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20.5" r="1.2"/><circle cx="18" cy="20.5" r="1.2"/><path d="M2 2.5h2.6l2.5 12a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 1.95-1.55L21.5 7H5.4"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 15 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+<symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h16"/><path d="m13 5 7 7-7 7"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6.5h16M4 12h16M4 17.5h16"/></symbol>
+<symbol id="i-boiler" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="16.5" rx="2"/><rect x="8.5" y="12" width="7" height="3.5" rx="1"/><path d="M9 19v2.5M15 19v2.5M12 19v2.5"/></symbol>
+<symbol id="i-heater" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="17" rx="6"/><circle cx="12" cy="8" r="2"/><path d="M10 19.5v2M14 19.5v2"/></symbol>
+<symbol id="i-pump" viewBox="0 0 24 24"><circle cx="9.5" cy="13.5" r="5.5"/><circle cx="9.5" cy="13.5" r="1.8"/><path d="M15 13.5h3.5V9.5H21"/><path d="M9.5 8V4.5H6"/><path d="M5 20.5h9"/></symbol>
+<symbol id="i-filter" viewBox="0 0 24 24"><rect x="4" y="5.5" width="5" height="15" rx="1.5"/><rect x="11.5" y="5.5" width="5" height="15" rx="1.5"/><path d="M3 3.5h15M6.5 3.5v2M14 3.5v2M18 3.5h1.5a2 2 0 0 1 2 2V8"/></symbol>
+<symbol id="i-meter" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.5"/><path d="M12 12l2.5-2.5"/><path d="M2.5 12h3M18.5 12h3"/><path d="M9.5 16.5h5"/></symbol>
+<symbol id="i-ups" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2"/><path d="m12.5 6.5-2.5 4.5h4l-2.5 4.5"/><path d="M9 18.5h6"/></symbol>
+<symbol id="i-fan" viewBox="0 0 24 24"><path d="M10.83 16.38a6.08 6.08 0 0 1-8.62-7l5.41 1.45a6.08 6.08 0 0 1 7-8.62l-1.45 5.41a6.08 6.08 0 0 1 8.62 7l-5.41-1.45a6.08 6.08 0 0 1-7 8.62l1.45-5.41Z"/><path d="M12 12v.01"/></symbol>
+<symbol id="i-thermostat" viewBox="0 0 24 24"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/><path d="M12 17.5v.01"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><path d="M3 20.5 5.5 10h13L21 20.5z"/><path d="M4.3 15.5h15.4M9.3 10l-1 10.5M14.7 10l1 10.5"/><path d="M12 2.5v2M7.5 4.5l1 1.2M16.5 4.5l-1 1.2"/></symbol>
+<!-- MAX: официальная иконка от заказчика (растр 144px, градиент в векторе не повторить) -->
+<symbol id="m-max" viewBox="0 0 40 40"><image href="../assets/img/max.webp" width="40" height="40"/></symbol>
+<symbol id="m-telegram" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="url(#g-tg)"/><path fill="#fff" transform="translate(4.8 5.6) scale(1.25)" d="M16.906 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></symbol>
+<symbol id="m-whatsapp" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="#25D366"/><path fill="#fff" transform="translate(8 8)" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
+<symbol id="m-viber" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="#7360F2"/><g fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 9.5c-6.3 0-10.2 2.4-10.2 8.7 0 3.5 1.2 5.6 3.4 6.9v4.4l3.7-3.2c1 .2 2 .3 3.1.3 6.3 0 10.2-2.5 10.2-8.4S26.3 9.5 20 9.5z"/><path d="M21.6 14a3.8 3.8 0 0 1 3.2 3.2M21.4 11.9a6 6 0 0 1 5.4 5.4"/></g><path fill="#fff" d="M16.3 13.6c.5-.4 1.1-.3 1.5.2l1 1.4c.3.5.2 1.1-.2 1.4l-.6.5c.4 1.4 1.5 2.6 2.9 3.1l.5-.6c.4-.4 1-.5 1.4-.2l1.4 1c.5.4.6 1 .2 1.5l-.5.6c-.6.7-1.6 1-2.5.6-2.7-1.1-4.6-3.1-5.6-5.8-.3-.9 0-1.9.6-2.4z"/></symbol>
+</svg>
+
+<!-- ============ ШАПКА ============ -->
+<div class="topbar">
+  <div class="container topbar__inner">
+    <span class="topbar__item topbar__item--city"><svg class="ico"><use href="#i-pin"/></svg>Мариуполь</span>
+    <span class="topbar__item"><svg class="ico"><use href="#i-pin"/></svg>ул. Варганова, 10</span>
+    <span class="topbar__item"><svg class="ico"><use href="#i-pin"/></svg>пр. Ильича, 142</span>
+    <span class="topbar__item"><svg class="ico"><use href="#i-pin"/></svg>пр. Победы, 36/21</span>
+    <span class="topbar__item" title="Сервисный центр"><svg class="ico"><use href="#i-wrench"/></svg>ул. Шевченко, 23</span>
+  </div>
+</div>
+
+<header class="site-header" id="site-header">
+  <div class="container site-header__inner">
+    <button class="icon-btn burger" type="button" aria-label="Открыть меню" aria-controls="drawer" aria-expanded="false" data-open-drawer>
+      <svg class="ico"><use href="#i-menu"/></svg>
+    </button>
+
+    <a class="logo" href="../">
+      <img class="logo__img" src="../assets/img/logo.webp" width="200" height="42" alt="Акватех">
+      <span class="logo__caption">Центр отопительного оборудования</span>
+    </a>
+
+    <!-- Компактная кнопка каталога: видна, когда шапка «прилипла» при прокрутке. Меню копируется из навигации скриптом -->
+    <div class="nav-dd header-catalog" data-dd>
+      <a class="btn btn--primary btn--sm header-catalog__btn" href="/catalog/" aria-haspopup="true" aria-expanded="false" data-dd-trigger>
+        <svg class="ico"><use href="#i-grid"/></svg><span>Каталог</span>
+      </a>
+    </div>
+
+    <form class="search" action="../search/" method="get" role="search">
+      <input class="search__input" type="search" name="q" placeholder="Название, бренд, артикул" aria-label="Поиск по каталогу" autocomplete="off">
+      <button class="search__btn" type="submit" aria-label="Найти"><svg class="ico"><use href="#i-search"/></svg></button>
+    </form>
+
+    <div class="header-phones">
+      <a class="header-phones__link" href="tel:+79490060061"><svg class="ico"><use href="#i-phone"/></svg>+7 (949) 006-006-1</a>
+      <a class="header-phones__link" href="tel:+79890060061"><svg class="ico"><use href="#i-phone"/></svg>+7 (989) 006-006-1</a>
+    </div>
+
+    <div class="header-msg">
+      <span class="header-msg__label">Напишите нам</span>
+      <div class="messengers messengers--sm">
+  <a class="messenger" href="https://max.ru/" target="_blank" rel="noopener" aria-label="Написать в MAX"><svg><use href="#m-max"/></svg></a>
+  <a class="messenger" href="https://t.me/+79490060061" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg><use href="#m-telegram"/></svg></a>
+  <a class="messenger" href="https://wa.me/79490060061" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg><use href="#m-whatsapp"/></svg></a>
+  <a class="messenger" href="viber://chat?number=%2B79490060061" aria-label="Написать в Viber"><svg><use href="#m-viber"/></svg></a>
+</div>
+
+    </div>
+
+    <div class="header-icons">
+      <a class="icon-btn header-icons__call" href="tel:+79490060061" aria-label="Позвонить"><svg class="ico"><use href="#i-phone"/></svg></a>
+      <a class="icon-btn header-icons__account" href="/personal/" aria-label="Личный кабинет"><svg class="ico"><use href="#i-user"/></svg></a>
+      <a class="icon-btn cart-btn" href="../personal/cart/" aria-label="Корзина"><svg class="ico"><use href="#i-cart"/></svg><span class="cart-btn__count" hidden>0</span></a>
+    </div>
+  </div>
+</header>
+
+<nav class="site-nav" aria-label="Основное меню">
+  <div class="container site-nav__inner">
+    <div class="nav-dd nav-dd--catalog" data-dd>
+      <a class="btn btn--primary site-nav__catalog" href="/catalog/" aria-haspopup="true" aria-expanded="false" data-dd-trigger>
+        <svg class="ico"><use href="#i-grid"/></svg><span>Каталог</span><svg class="ico chev"><use href="#i-chevron-down"/></svg>
+      </a>
+      <div class="dropdown" id="catalog-menu">
+        <ul class="fly">
+          <li class="fly__item">
+            <a class="fly__link" href="/category/kotly/"><svg class="ico fly__icon"><use href="#i-boiler"/></svg><span>Котлы</span><svg class="ico fly__arrow"><use href="#i-chevron-right"/></svg></a>
+            <ul class="fly__sub">
+              <li><a href="../category/kotly-gazovye-nastennye/">Котлы газовые настенные</a></li>
+              <li><a href="/category/kotly-gazovye-napolnye/">Котлы газовые напольные</a></li>
+              <li><a href="/category/kotly-elektricheskie/">Электрические котлы</a></li>
+            </ul>
+          </li>
+          <li class="fly__item">
+            <a class="fly__link" href="../category/vodonagrevateli/"><svg class="ico fly__icon"><use href="#i-heater"/></svg><span>Водонагреватели</span><svg class="ico fly__arrow"><use href="#i-chevron-right"/></svg></a>
+            <ul class="fly__sub">
+              <li><a href="/category/vodonagrevateli-elektricheskie-nakopitelnye/">Электрические накопительные</a></li>
+              <li><a href="/category/kolonki-gazovye/">Колонки газовые</a></li>
+              <li><a href="/category/vodonagrevateli-kombinirovannye/">Комбинированные</a></li>
+            </ul>
+          </li>
+          <li class="fly__item"><a class="fly__link" href="/category/nasosnoe-oborudovanie/"><svg class="ico fly__icon"><use href="#i-pump"/></svg><span>Насосное оборудование</span></a></li>
+          <li class="fly__item"><a class="fly__link" href="/category/sistemy-filtratsii-vody/"><svg class="ico fly__icon"><use href="#i-filter"/></svg><span>Системы фильтрации воды</span></a></li>
+          <li class="fly__item">
+            <a class="fly__link" href="/category/schetchiki-vody/"><svg class="ico fly__icon"><use href="#i-meter"/></svg><span>Счётчики воды</span><svg class="ico fly__arrow"><use href="#i-chevron-right"/></svg></a>
+            <ul class="fly__sub">
+              <li><a href="/category/schetchiki-vody-bytovye/">Бытовые</a></li>
+              <li><a href="/category/schetchiki-vody-promyshlennye/">Промышленные</a></li>
+              <li><a href="/category/schetchiki-vody-mokrokhodnye/">Мокроходные</a></li>
+            </ul>
+          </li>
+          <li class="fly__item">
+            <a class="fly__link" href="/category/ibp-i-stabilizatory/"><svg class="ico fly__icon"><use href="#i-ups"/></svg><span>ИБП и стабилизаторы</span><svg class="ico fly__arrow"><use href="#i-chevron-right"/></svg></a>
+            <ul class="fly__sub">
+              <li><a href="/category/istochniki-bespereboynogo-pitaniya/">Источники бесперебойного питания</a></li>
+              <li><a href="/category/stabilizatory-napryazheniya/">Стабилизаторы напряжения</a></li>
+            </ul>
+          </li>
+          <li class="fly__item"><a class="fly__link" href="/category/rekuperatory/"><svg class="ico fly__icon"><use href="#i-fan"/></svg><span>Рекуператоры</span></a></li>
+          <li class="fly__item"><a class="fly__link" href="/category/termostaty/"><svg class="ico fly__icon"><use href="#i-thermostat"/></svg><span>Термостаты</span></a></li>
+          <li class="fly__item"><a class="fly__link" href="/category/solnechnye-paneli/"><svg class="ico fly__icon"><use href="#i-sun"/></svg><span>Солнечные панели</span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <ul class="site-nav__list">
+      <li class="nav-dd" data-dd>
+        <button class="site-nav__link" type="button" aria-haspopup="true" aria-expanded="false" data-dd-trigger>Услуги<svg class="ico chev"><use href="#i-chevron-down"/></svg></button>
+        <div class="dropdown">
+          <ul class="fly">
+            <li class="fly__item">
+              <span class="fly__link" tabindex="0">Монтаж<svg class="ico fly__arrow"><use href="#i-chevron-right"/></svg></span>
+              <ul class="fly__sub">
+                <li><a href="/services/montazh-kotlov/">Монтаж котлов</a></li>
+                <li><a href="/services/montazh-vodonagrevateley/">Монтаж водонагревателей</a></li>
+                <li><a href="/services/montazh-gazovykh-kolonok/">Монтаж газовых колонок</a></li>
+                <li><a href="/services/montazh-nasosnogo-oborudovaniya/">Монтаж насосного оборудования</a></li>
+                <li><a href="/services/montazh-sistem-filtratsii-vody/">Монтаж систем фильтрации воды</a></li>
+              </ul>
+            </li>
+            <li class="fly__item">
+              <span class="fly__link" tabindex="0">Ремонт<svg class="ico fly__arrow"><use href="#i-chevron-right"/></svg></span>
+              <ul class="fly__sub">
+                <li><a href="../services/remont-kotlov/">Ремонт котлов</a></li>
+                <li><a href="/services/remont-vodonagrevateley/">Ремонт водонагревателей</a></li>
+                <li><a href="/services/remont-gazovykh-kolonok/">Ремонт газовых колонок</a></li>
+                <li><a href="/services/remont-nasosnogo-oborudovaniya/">Ремонт насосного оборудования</a></li>
+                <li><a href="/services/remont-sistem-filtratsii-vody/">Ремонт систем фильтрации воды</a></li>
+              </ul>
+            </li>
+            <li class="fly__item">
+              <span class="fly__link" tabindex="0">Обслуживание<svg class="ico fly__arrow"><use href="#i-chevron-right"/></svg></span>
+              <ul class="fly__sub">
+                <li><a href="/services/promyvka-kotlov/">Промывка котлов</a></li>
+                <li><a href="/services/promyvka-gazovykh-kolonok/">Промывка газовых колонок</a></li>
+                <li><a href="/services/promyvka-sistem-otopleniya/">Промывка систем отопления</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li><a class="site-nav__link" href="../about/">О компании</a></li>
+      <li><a class="site-nav__link" href="../delivery/">Доставка и оплата</a></li>
+      <li><a class="site-nav__link" href="../warranty/">Гарантии и возврат</a></li>
+      <li><a class="site-nav__link" href="../articles/">Статьи</a></li>
+      <li><a class="site-nav__link" href="../contacts/">Контакты</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="content">
+<!-- Результаты поиска по названию и артикулу. Битрикс: search.page (или catalog.search) с выводом карточек как в каталоге.
+       В демо в разметке все товары, отбирает их по запросу ?q= скрипт shop.js -->
+  <section class="page-intro">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Навигационная цепочка"><ol class="breadcrumbs__list"><li><a href="../">Главная</a></li><li><span aria-current="page">Поиск</span></li></ol></nav>
+      <h1 class="page-title">Поиск по каталогу</h1>
+      <form class="search search--page" action="" method="get" role="search" data-search-form>
+        <input class="search__input" type="search" name="q" placeholder="Название, бренд, артикул" aria-label="Поиск по каталогу" autocomplete="off">
+        <button class="search__btn" type="submit" aria-label="Найти"><svg class="ico"><use href="#i-search"/></svg></button>
+      </form>
+      <p class="search-summary" aria-live="polite" data-search-summary></p>
+    </div>
+  </section>
+
+  <section class="section section--first">
+    <div class="container">
+      <ul class="products products--wide" data-products>
+        <li class="product-card" data-id="ariston-velis-tech-dry-50">
+  <a class="product-card__img" href="/product/ariston-velis-tech-dry-50/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/ariston-velis-tech-dry-50.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/ariston-velis-tech-dry-50/">Водонагреватель Ariston VELIS TECH DRY 50</a></h2>
+  <p class="product-card__price">24 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 506×275×776 мм</li><li>Объём бака: 50 л</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="ariston-velis-tech-dry-50" data-name="Водонагреватель Ariston VELIS TECH DRY 50" data-price="24900" data-article="3100911" data-img="../assets/img/products/ariston-velis-tech-dry-50.webp" data-url="/product/ariston-velis-tech-dry-50/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="tesy-bilight-80">
+  <a class="product-card__img" href="/product/tesy-bilight-80/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/tesy-bilight-80.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/tesy-bilight-80/">Водонагреватель TESY BiLight 80</a></h2>
+  <p class="product-card__price">16 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 440×467×845 мм</li><li>Объём бака: 80 л</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="tesy-bilight-80" data-name="Водонагреватель TESY BiLight 80" data-price="16900" data-article="GCV 804420 B11 TSRC" data-img="../assets/img/products/tesy-bilight-80.webp" data-url="/product/tesy-bilight-80/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="ariston-pro1-r-80">
+  <a class="product-card__img" href="/product/ariston-pro1-r-80/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/ariston-pro1-r-80.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/ariston-pro1-r-80/">Водонагреватель Ariston PRO1 R 80</a></h2>
+  <p class="product-card__price">18 500 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 450×480×748 мм</li><li>Объём бака: 80 л</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="ariston-pro1-r-80" data-name="Водонагреватель Ariston PRO1 R 80" data-price="18500" data-article="3700557" data-img="../assets/img/products/ariston-pro1-r-80.webp" data-url="/product/ariston-pro1-r-80/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="tesy-anticalc-100">
+  <a class="product-card__img" href="/product/tesy-anticalc-100/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/tesy-anticalc-100.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/tesy-anticalc-100/">Водонагреватель TESY Anticalc 100</a></h2>
+  <p class="product-card__price">22 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 440×467×985 мм</li><li>Объём бака: 100 л</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="tesy-anticalc-100" data-name="Водонагреватель TESY Anticalc 100" data-price="22900" data-article="GCV 1004724D C21 ECW" data-img="../assets/img/products/tesy-anticalc-100.webp" data-url="/product/tesy-anticalc-100/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="ariston-fast-evo-11">
+  <a class="product-card__img" href="/product/ariston-fast-evo-11/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/ariston-fast-evo-11.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/ariston-fast-evo-11/">Газовая колонка Ariston FAST EVO 11</a></h2>
+  <p class="product-card__price">21 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 330×180×550 мм</li><li>Мощность: 19 кВт</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="ariston-fast-evo-11" data-name="Газовая колонка Ariston FAST EVO 11" data-price="21900" data-article="3632292" data-img="../assets/img/products/ariston-fast-evo-11.webp" data-url="/product/ariston-fast-evo-11/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="lemaks-evro-20">
+  <a class="product-card__img" href="/product/lemaks-evro-20/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/lemaks-evro-20.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/lemaks-evro-20/">Газовая колонка Лемакс Евро-20</a></h2>
+  <p class="product-card__price">15 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 350×188×592 мм</li><li>Мощность: 20 кВт</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="lemaks-evro-20" data-name="Газовая колонка Лемакс Евро-20" data-price="15900" data-article="125031" data-img="../assets/img/products/lemaks-evro-20.webp" data-url="/product/lemaks-evro-20/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="tesy-bilight-slim-50">
+  <a class="product-card__img" href="/product/tesy-bilight-slim-50/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/tesy-bilight-slim-50.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/tesy-bilight-slim-50/">Водонагреватель TESY BiLight Slim 50</a></h2>
+  <p class="product-card__price">14 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 353×380×837 мм</li><li>Объём бака: 50 л</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="tesy-bilight-slim-50" data-name="Водонагреватель TESY BiLight Slim 50" data-price="14900" data-article="GCV 503520 B11 TSR" data-img="../assets/img/products/tesy-bilight-slim-50.webp" data-url="/product/tesy-bilight-slim-50/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="ariston-velis-tech-80">
+  <a class="product-card__img" href="/product/ariston-velis-tech-80/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/ariston-velis-tech-80.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/ariston-velis-tech-80/">Водонагреватель Ariston VELIS TECH 80</a></h2>
+  <p class="product-card__price">29 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 506×275×1066 мм</li><li>Объём бака: 80 л</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="ariston-velis-tech-80" data-name="Водонагреватель Ariston VELIS TECH 80" data-price="29900" data-article="3100912" data-img="../assets/img/products/ariston-velis-tech-80.webp" data-url="/product/ariston-velis-tech-80/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="tesy-compact-15">
+  <a class="product-card__img" href="/product/tesy-compact-15/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/tesy-compact-15.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/tesy-compact-15/">Водонагреватель TESY Compact 15</a></h2>
+  <p class="product-card__price">10 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 368×340×399 мм</li><li>Объём бака: 15 л</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="tesy-compact-15" data-name="Водонагреватель TESY Compact 15" data-price="10900" data-article="GCA 1515 L52 RC" data-img="../assets/img/products/tesy-compact-15.webp" data-url="/product/tesy-compact-15/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="ariston-pro1-r-dry-50">
+  <a class="product-card__img" href="/product/ariston-pro1-r-dry-50/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/ariston-pro1-r-dry-50.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/ariston-pro1-r-dry-50/">Водонагреватель Ariston PRO1 R DRY 50</a></h2>
+  <p class="product-card__price">19 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 450×480×553 мм</li><li>Объём бака: 50 л</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="ariston-pro1-r-dry-50" data-name="Водонагреватель Ariston PRO1 R DRY 50" data-price="19900" data-article="3700583" data-img="../assets/img/products/ariston-pro1-r-dry-50.webp" data-url="/product/ariston-pro1-r-dry-50/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="tesy-bilight-100">
+  <a class="product-card__img" href="/product/tesy-bilight-100/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/tesy-bilight-100.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/tesy-bilight-100/">Водонагреватель TESY BiLight 100</a></h2>
+  <p class="product-card__price">20 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 440×467×985 мм</li><li>Объём бака: 100 л</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="tesy-bilight-100" data-name="Водонагреватель TESY BiLight 100" data-price="20900" data-article="GCV 1004420 B11 TSRC" data-img="../assets/img/products/tesy-bilight-100.webp" data-url="/product/tesy-bilight-100/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="tesy-anticalc-slim-80">
+  <a class="product-card__img" href="/product/tesy-anticalc-slim-80/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/tesy-anticalc-slim-80.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/tesy-anticalc-slim-80/">Водонагреватель TESY Anticalc Slim 80</a></h2>
+  <p class="product-card__price">23 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 353×380×1186 мм</li><li>Объём бака: 80 л</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="tesy-anticalc-slim-80" data-name="Водонагреватель TESY Anticalc Slim 80" data-price="23900" data-article="GCV 803824D B14 TSRC" data-img="../assets/img/products/tesy-anticalc-slim-80.webp" data-url="/product/tesy-anticalc-slim-80/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="tesy-bilight-slim-30">
+  <a class="product-card__img" href="/product/tesy-bilight-slim-30/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/tesy-bilight-slim-50.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/tesy-bilight-slim-30/">Водонагреватель TESY BiLight Slim 30</a></h2>
+  <p class="product-card__price">12 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 353×380×625 мм</li><li>Объём бака: 30 л</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="tesy-bilight-slim-30" data-name="Водонагреватель TESY BiLight Slim 30" data-price="12900" data-article="GCV 303520 B11 TSR" data-img="../assets/img/products/tesy-bilight-slim-50.webp" data-url="/product/tesy-bilight-slim-30/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="ariston-velis-tech-30">
+  <a class="product-card__img" href="/product/ariston-velis-tech-30/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/ariston-velis-tech-80.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/ariston-velis-tech-30/">Водонагреватель Ariston VELIS TECH 30</a></h2>
+  <p class="product-card__price">21 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 506×275×566 мм</li><li>Объём бака: 30 л</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="ariston-velis-tech-30" data-name="Водонагреватель Ariston VELIS TECH 30" data-price="21900" data-article="3100910" data-img="../assets/img/products/ariston-velis-tech-80.webp" data-url="/product/ariston-velis-tech-30/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="tesy-compact-10-u">
+  <a class="product-card__img" href="/product/tesy-compact-10-u/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/tesy-compact-15.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/tesy-compact-10-u/">Водонагреватель TESY Compact 10 U</a></h2>
+  <p class="product-card__price">9 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 368×340×340 мм</li><li>Объём бака: 10 л</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="tesy-compact-10-u" data-name="Водонагреватель TESY Compact 10 U" data-price="9900" data-article="GCU 1015 L52 RC" data-img="../assets/img/products/tesy-compact-15.webp" data-url="/product/tesy-compact-10-u/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="ariston-fast-evo-14">
+  <a class="product-card__img" href="/product/ariston-fast-evo-14/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/ariston-fast-evo-11.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/ariston-fast-evo-14/">Газовая колонка Ariston FAST EVO 14</a></h2>
+  <p class="product-card__price">23 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 330×180×590 мм</li><li>Мощность: 24 кВт</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="ariston-fast-evo-14" data-name="Газовая колонка Ariston FAST EVO 14" data-price="23900" data-article="3632293" data-img="../assets/img/products/ariston-fast-evo-11.webp" data-url="/product/ariston-fast-evo-14/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="tesy-bilight-s-teploobmennikom-100">
+  <a class="product-card__img" href="/product/tesy-bilight-s-teploobmennikom-100/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/tesy-bilight-s-teploobmennikom-100.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/tesy-bilight-s-teploobmennikom-100/">Комбинированный водонагреватель TESY BiLight с теплообменником 100</a></h2>
+  <p class="product-card__price">32 900 ₽</p>
+  <p class="stock stock--order">Под заказ</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 440×467×985 мм</li><li>Объём бака: 100 л</li></ul>
+  <button class="btn btn--outline btn--block product-card__btn" type="button" data-open-modal="callback" data-modal-title="Оставить заявку" data-modal-button="Отправить" data-modal-form="Заявка на товар: Комбинированный водонагреватель TESY BiLight с теплообменником 100">Оставить заявку</button>
+</li>
+<li class="product-card" data-id="tesy-bilight-s-teploobmennikom-150">
+  <a class="product-card__img" href="/product/tesy-bilight-s-teploobmennikom-150/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/tesy-bilight-s-teploobmennikom-150.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/tesy-bilight-s-teploobmennikom-150/">Комбинированный водонагреватель TESY BiLight с теплообменником 150</a></h2>
+  <p class="product-card__price">39 900 ₽</p>
+  <p class="stock stock--order">Под заказ</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 440×467×1320 мм</li><li>Объём бака: 150 л</li></ul>
+  <button class="btn btn--outline btn--block product-card__btn" type="button" data-open-modal="callback" data-modal-title="Оставить заявку" data-modal-button="Отправить" data-modal-form="Заявка на товар: Комбинированный водонагреватель TESY BiLight с теплообменником 150">Оставить заявку</button>
+</li>
+<li class="product-card" data-id="ariston-next-evo-11">
+  <a class="product-card__img" href="/product/ariston-next-evo-11/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/ariston-next-evo-11.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/ariston-next-evo-11/">Газовая колонка Ariston NEXT EVO 11</a></h2>
+  <p class="product-card__price">34 900 ₽</p>
+  <p class="stock stock--order">Под заказ</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 330×180×550 мм</li><li>Мощность: 19 кВт</li></ul>
+  <button class="btn btn--outline btn--block product-card__btn" type="button" data-open-modal="callback" data-modal-title="Оставить заявку" data-modal-button="Отправить" data-modal-form="Заявка на товар: Газовая колонка Ariston NEXT EVO 11">Оставить заявку</button>
+</li>
+<li class="product-card" data-id="tesy-bilight-s-teploobmennikom-200">
+  <a class="product-card__img" href="/product/tesy-bilight-s-teploobmennikom-200/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/tesy-bilight-s-teploobmennikom-150.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/tesy-bilight-s-teploobmennikom-200/">Комбинированный водонагреватель TESY BiLight с теплообменником 200</a></h2>
+  <p class="product-card__price product-card__price--none">Цена по запросу</p>
+  <p class="stock stock--order">Под заказ</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 440×467×1560 мм</li><li>Объём бака: 200 л</li></ul>
+  <button class="btn btn--outline btn--block product-card__btn" type="button" data-open-modal="callback" data-modal-title="Оставить заявку" data-modal-button="Отправить" data-modal-form="Заявка на товар: Комбинированный водонагреватель TESY BiLight с теплообменником 200">Оставить заявку</button>
+</li>
+<li class="product-card" data-id="lemaks-alfa-20m">
+  <a class="product-card__img" href="/product/lemaks-alfa-20m/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/lemaks-alfa-20m.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/lemaks-alfa-20m/">Газовая колонка Лемакс Альфа-20М</a></h2>
+  <p class="product-card__price">17 900 ₽</p>
+  <p class="stock stock--out">Нет в наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 350×188×592 мм</li><li>Мощность: 20 кВт</li></ul>
+  <button class="btn btn--outline btn--block product-card__btn" type="button" data-open-modal="callback" data-modal-title="Оставить заявку" data-modal-button="Отправить" data-modal-form="Заявка на товар: Газовая колонка Лемакс Альфа-20М">Оставить заявку</button>
+</li>
+
+        <li class="product-card" data-id="gazovyy-kotel-ariston-argis-c-24-ff">
+  <a class="product-card__img" href="../product/gazovyy-kotel-ariston-argis-c-24-ff/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/argis-c-card.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="../product/gazovyy-kotel-ariston-argis-c-24-ff/">Газовый котёл Ariston ARGIS C 24 FF</a></h2>
+  <p class="product-card__price">59 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 400×315×700 мм</li><li>Мощность отопления: 24 кВт</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="gazovyy-kotel-ariston-argis-c-24-ff" data-name="Газовый котёл Ariston ARGIS C 24 FF" data-price="59900" data-article="3636151" data-img="../assets/img/products/argis-c-card.webp" data-url="../product/gazovyy-kotel-ariston-argis-c-24-ff/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="gazovyy-kotel-ariston-argis-c-15-ff">
+  <a class="product-card__img" href="../product/gazovyy-kotel-ariston-argis-c-15-ff/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/argis-c-card.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="../product/gazovyy-kotel-ariston-argis-c-15-ff/">Газовый котёл Ariston ARGIS C 15 FF</a></h2>
+  <p class="product-card__price">53 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 400×315×700 мм</li><li>Мощность отопления: 15 кВт</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="gazovyy-kotel-ariston-argis-c-15-ff" data-name="Газовый котёл Ariston ARGIS C 15 FF" data-price="53900" data-article="3636149" data-img="../assets/img/products/argis-c-card.webp" data-url="../product/gazovyy-kotel-ariston-argis-c-15-ff/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="gazovyy-kotel-lemaks-prime-v20">
+  <a class="product-card__img" href="/product/gazovyy-kotel-lemaks-prime-v20/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/lemaks-prime-v.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/gazovyy-kotel-lemaks-prime-v20/">Газовый котёл Лемакс PRIME-V20</a></h2>
+  <p class="product-card__price">38 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 400×300×700 мм</li><li>Мощность отопления: 20 кВт</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="gazovyy-kotel-lemaks-prime-v20" data-name="Газовый котёл Лемакс PRIME-V20" data-price="38900" data-article="125280" data-img="../assets/img/products/lemaks-prime-v.webp" data-url="/product/gazovyy-kotel-lemaks-prime-v20/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="gazovyy-kotel-lemaks-prime-v24">
+  <a class="product-card__img" href="/product/gazovyy-kotel-lemaks-prime-v24/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/lemaks-prime-v.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/gazovyy-kotel-lemaks-prime-v24/">Газовый котёл Лемакс PRIME-V24</a></h2>
+  <p class="product-card__price">41 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 400×300×700 мм</li><li>Мощность отопления: 24 кВт</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="gazovyy-kotel-lemaks-prime-v24" data-name="Газовый котёл Лемакс PRIME-V24" data-price="41900" data-article="125281" data-img="../assets/img/products/lemaks-prime-v.webp" data-url="/product/gazovyy-kotel-lemaks-prime-v24/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="gazovyy-kotel-lemaks-prime-v32">
+  <a class="product-card__img" href="/product/gazovyy-kotel-lemaks-prime-v32/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/lemaks-prime-v.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/gazovyy-kotel-lemaks-prime-v32/">Газовый котёл Лемакс PRIME-V32</a></h2>
+  <p class="product-card__price">49 900 ₽</p>
+  <p class="stock stock--in">В наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 450×300×750 мм</li><li>Мощность отопления: 32 кВт</li></ul>
+  <button class="btn btn--primary btn--block product-card__btn" type="button" data-add-to-cart data-id="gazovyy-kotel-lemaks-prime-v32" data-name="Газовый котёл Лемакс PRIME-V32" data-price="49900" data-article="125283" data-img="../assets/img/products/lemaks-prime-v.webp" data-url="/product/gazovyy-kotel-lemaks-prime-v32/"><svg class="ico"><use href="#i-cart"/></svg><span>В корзину</span></button>
+</li>
+<li class="product-card" data-id="gazovyy-kotel-ariston-argis-c-10-ff">
+  <a class="product-card__img" href="../product/gazovyy-kotel-ariston-argis-c-10-ff/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/argis-c-card.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="../product/gazovyy-kotel-ariston-argis-c-10-ff/">Газовый котёл Ariston ARGIS C 10 FF</a></h2>
+  <p class="product-card__price">49 900 ₽</p>
+  <p class="stock stock--order">Под заказ</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 400×315×700 мм</li><li>Мощность отопления: 10 кВт</li></ul>
+  <button class="btn btn--outline btn--block product-card__btn" type="button" data-open-modal="callback" data-modal-title="Оставить заявку" data-modal-button="Отправить" data-modal-form="Заявка на товар: Газовый котёл Ariston ARGIS C 10 FF">Оставить заявку</button>
+</li>
+<li class="product-card" data-id="gazovyy-kotel-lemaks-prime-v24-ho">
+  <a class="product-card__img" href="/product/gazovyy-kotel-lemaks-prime-v24-ho/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/lemaks-prime-v.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="/product/gazovyy-kotel-lemaks-prime-v24-ho/">Газовый котёл Лемакс PRIME-V24 HO</a></h2>
+  <p class="product-card__price product-card__price--none">Цена по запросу</p>
+  <p class="stock stock--order">Под заказ</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 400×300×700 мм</li><li>Мощность отопления: 24 кВт</li></ul>
+  <button class="btn btn--outline btn--block product-card__btn" type="button" data-open-modal="callback" data-modal-title="Оставить заявку" data-modal-button="Отправить" data-modal-form="Заявка на товар: Газовый котёл Лемакс PRIME-V24 HO">Оставить заявку</button>
+</li>
+<li class="product-card" data-id="gazovyy-kotel-ariston-argis-c-18-ff">
+  <a class="product-card__img" href="../product/gazovyy-kotel-ariston-argis-c-18-ff/" tabindex="-1" aria-hidden="true"><img src="../assets/img/products/argis-c-card.webp" width="360" height="480" alt="" loading="lazy"></a>
+  <h2 class="product-card__title"><a href="../product/gazovyy-kotel-ariston-argis-c-18-ff/">Газовый котёл Ariston ARGIS C 18 FF</a></h2>
+  <p class="product-card__price">56 900 ₽</p>
+  <p class="stock stock--out">Нет в наличии</p>
+  <ul class="product-card__specs"><li>ШхГхВ: 400×315×700 мм</li><li>Мощность отопления: 18 кВт</li></ul>
+  <button class="btn btn--outline btn--block product-card__btn" type="button" data-open-modal="callback" data-modal-title="Оставить заявку" data-modal-button="Отправить" data-modal-form="Заявка на товар: Газовый котёл Ariston ARGIS C 18 FF">Оставить заявку</button>
+</li>
+
+      </ul>
+      <div class="empty-state" data-search-empty hidden>
+        <span class="empty-state__icon"><svg class="ico"><use href="#i-search"/></svg></span>
+        <h2 class="empty-state__title">Ничего не нашлось</h2>
+        <p class="empty-state__text">Проверьте, нет ли опечатки, или поищите по бренду либо артикулу. Если нужной модели нет на сайте, позвоните нам: <a href="tel:+79490060061">+7 (949) 006-006-1</a> — привезём под заказ.</p>
+        <div class="empty-state__actions">
+          <a class="btn btn--primary" href="../category/vodonagrevateli/">Водонагреватели</a>
+          <a class="btn btn--outline" href="../category/kotly-gazovye-nastennye/">Котлы газовые настенные</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="application/json" id="search-data">[[{"id":"ariston-velis-tech-dry-50","name":"Водонагреватель Ariston VELIS TECH DRY 50","url":"/product/ariston-velis-tech-dry-50/","img":"products/ariston-velis-tech-dry-50.webp","brand":"Ariston","series":"VELIS TECH","article":"3100911","price":24900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"506×275×776 мм"},{"name":"Объём бака","value":"50 л"}],"props":{"heating":["Электрический"],"kind":["Накопительный"],"mount":["Настенный"],"power":2,"width":506,"depth":275,"height":776}},{"id":"tesy-bilight-80","name":"Водонагреватель TESY BiLight 80","url":"/product/tesy-bilight-80/","img":"products/tesy-bilight-80.webp","brand":"TESY","series":"BiLight","article":"GCV 804420 B11 TSRC","price":16900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"440×467×845 мм"},{"name":"Объём бака","value":"80 л"}],"props":{"heating":["Электрический"],"kind":["Накопительный"],"mount":["Настенный"],"power":2,"width":440,"depth":467,"height":845}},{"id":"ariston-pro1-r-80","name":"Водонагреватель Ariston PRO1 R 80","url":"/product/ariston-pro1-r-80/","img":"products/ariston-pro1-r-80.webp","brand":"Ariston","series":"PRO1 R","article":"3700557","price":18500,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"450×480×748 мм"},{"name":"Объём бака","value":"80 л"}],"props":{"heating":["Электрический"],"kind":["Накопительный"],"mount":["Настенный"],"power":1.5,"width":450,"depth":480,"height":748}},{"id":"tesy-anticalc-100","name":"Водонагреватель TESY Anticalc 100","url":"/product/tesy-anticalc-100/","img":"products/tesy-anticalc-100.webp","brand":"TESY","series":"Anticalc","article":"GCV 1004724D C21 ECW","price":22900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"440×467×985 мм"},{"name":"Объём бака","value":"100 л"}],"props":{"heating":["Электрический"],"kind":["Накопительный"],"mount":["Настенный"],"power":2.4,"width":440,"depth":467,"height":985}},{"id":"ariston-fast-evo-11","name":"Газовая колонка Ariston FAST EVO 11","url":"/product/ariston-fast-evo-11/","img":"products/ariston-fast-evo-11.webp","brand":"Ariston","series":"FAST EVO","article":"3632292","price":21900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"330×180×550 мм"},{"name":"Мощность","value":"19 кВт"}],"props":{"heating":["Газовый"],"kind":["Проточный"],"mount":["Настенный"],"power":19,"width":330,"depth":180,"height":550}},{"id":"lemaks-evro-20","name":"Газовая колонка Лемакс Евро-20","url":"/product/lemaks-evro-20/","img":"products/lemaks-evro-20.webp","brand":"Лемакс","series":"Евро","article":"125031","price":15900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"350×188×592 мм"},{"name":"Мощность","value":"20 кВт"}],"props":{"heating":["Газовый"],"kind":["Проточный"],"mount":["Настенный"],"power":20,"width":350,"depth":188,"height":592}},{"id":"tesy-bilight-slim-50","name":"Водонагреватель TESY BiLight Slim 50","url":"/product/tesy-bilight-slim-50/","img":"products/tesy-bilight-slim-50.webp","brand":"TESY","series":"BiLight Slim","article":"GCV 503520 B11 TSR","price":14900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"353×380×837 мм"},{"name":"Объём бака","value":"50 л"}],"props":{"heating":["Электрический"],"kind":["Накопительный"],"mount":["Настенный"],"power":2,"width":353,"depth":380,"height":837}},{"id":"ariston-velis-tech-80","name":"Водонагреватель Ariston VELIS TECH 80","url":"/product/ariston-velis-tech-80/","img":"products/ariston-velis-tech-80.webp","brand":"Ariston","series":"VELIS TECH","article":"3100912","price":29900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"506×275×1066 мм"},{"name":"Объём бака","value":"80 л"}],"props":{"heating":["Электрический"],"kind":["Накопительный"],"mount":["Настенный"],"power":2,"width":506,"depth":275,"height":1066}},{"id":"tesy-compact-15","name":"Водонагреватель TESY Compact 15","url":"/product/tesy-compact-15/","img":"products/tesy-compact-15.webp","brand":"TESY","series":"Compact","article":"GCA 1515 L52 RC","price":10900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"368×340×399 мм"},{"name":"Объём бака","value":"15 л"}],"props":{"heating":["Электрический"],"kind":["Накопительный"],"mount":["Над раковиной"],"power":1.5,"width":368,"depth":340,"height":399}},{"id":"ariston-pro1-r-dry-50","name":"Водонагреватель Ariston PRO1 R DRY 50","url":"/product/ariston-pro1-r-dry-50/","img":"products/ariston-pro1-r-dry-50.webp","brand":"Ariston","series":"PRO1 R","article":"3700583","price":19900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"450×480×553 мм"},{"name":"Объём бака","value":"50 л"}],"props":{"heating":["Электрический"],"kind":["Накопительный"],"mount":["Настенный"],"power":1.5,"width":450,"depth":480,"height":553}},{"id":"tesy-bilight-100","name":"Водонагреватель TESY BiLight 100","url":"/product/tesy-bilight-100/","img":"products/tesy-bilight-100.webp","brand":"TESY","series":"BiLight","article":"GCV 1004420 B11 TSRC","price":20900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"440×467×985 мм"},{"name":"Объём бака","value":"100 л"}],"props":{"heating":["Электрический"],"kind":["Накопительный"],"mount":["Настенный"],"power":2,"width":440,"depth":467,"height":985}},{"id":"tesy-anticalc-slim-80","name":"Водонагреватель TESY Anticalc Slim 80","url":"/product/tesy-anticalc-slim-80/","img":"products/tesy-anticalc-slim-80.webp","brand":"TESY","series":"Anticalc Slim","article":"GCV 803824D B14 TSRC","price":23900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"353×380×1186 мм"},{"name":"Объём бака","value":"80 л"}],"props":{"heating":["Электрический"],"kind":["Накопительный"],"mount":["Настенный"],"power":2.4,"width":353,"depth":380,"height":1186}},{"id":"tesy-bilight-slim-30","name":"Водонагреватель TESY BiLight Slim 30","url":"/product/tesy-bilight-slim-30/","img":"products/tesy-bilight-slim-50.webp","brand":"TESY","series":"BiLight Slim","article":"GCV 303520 B11 TSR","price":12900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"353×380×625 мм"},{"name":"Объём бака","value":"30 л"}],"props":{"heating":["Электрический"],"kind":["Накопительный"],"mount":["Настенный"],"power":1.6,"width":353,"depth":380,"height":625}},{"id":"ariston-velis-tech-30","name":"Водонагреватель Ariston VELIS TECH 30","url":"/product/ariston-velis-tech-30/","img":"products/ariston-velis-tech-80.webp","brand":"Ariston","series":"VELIS TECH","article":"3100910","price":21900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"506×275×566 мм"},{"name":"Объём бака","value":"30 л"}],"props":{"heating":["Электрический"],"kind":["Накопительный"],"mount":["Настенный"],"power":2,"width":506,"depth":275,"height":566}},{"id":"tesy-compact-10-u","name":"Водонагреватель TESY Compact 10 U","url":"/product/tesy-compact-10-u/","img":"products/tesy-compact-15.webp","brand":"TESY","series":"Compact","article":"GCU 1015 L52 RC","price":9900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"368×340×340 мм"},{"name":"Объём бака","value":"10 л"}],"props":{"heating":["Электрический"],"kind":["Накопительный"],"mount":["Под раковиной"],"power":1.5,"width":368,"depth":340,"height":340}},{"id":"ariston-fast-evo-14","name":"Газовая колонка Ariston FAST EVO 14","url":"/product/ariston-fast-evo-14/","img":"products/ariston-fast-evo-11.webp","brand":"Ariston","series":"FAST EVO","article":"3632293","price":23900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"330×180×590 мм"},{"name":"Мощность","value":"24 кВт"}],"props":{"heating":["Газовый"],"kind":["Проточный"],"mount":["Настенный"],"power":24,"width":330,"depth":180,"height":590}},{"id":"tesy-bilight-s-teploobmennikom-100","name":"Комбинированный водонагреватель TESY BiLight с теплообменником 100","url":"/product/tesy-bilight-s-teploobmennikom-100/","img":"products/tesy-bilight-s-teploobmennikom-100.webp","brand":"TESY","series":"BiLight с теплообменником","article":"GCVS 1004420 B11 TSRC","price":32900,"stock":"order","stock_text":"Под заказ","can_buy":false,"specs":[{"name":"ШхГхВ","value":"440×467×985 мм"},{"name":"Объём бака","value":"100 л"}],"props":{"heating":["Комбинированный"],"kind":["Накопительный"],"mount":["Настенный"],"power":2,"width":440,"depth":467,"height":985}},{"id":"tesy-bilight-s-teploobmennikom-150","name":"Комбинированный водонагреватель TESY BiLight с теплообменником 150","url":"/product/tesy-bilight-s-teploobmennikom-150/","img":"products/tesy-bilight-s-teploobmennikom-150.webp","brand":"TESY","series":"BiLight с теплообменником","article":"GCVS 1504420 B11 TSRC","price":39900,"stock":"order","stock_text":"Под заказ","can_buy":false,"specs":[{"name":"ШхГхВ","value":"440×467×1320 мм"},{"name":"Объём бака","value":"150 л"}],"props":{"heating":["Комбинированный"],"kind":["Накопительный"],"mount":["Настенный"],"power":2,"width":440,"depth":467,"height":1320}},{"id":"ariston-next-evo-11","name":"Газовая колонка Ariston NEXT EVO 11","url":"/product/ariston-next-evo-11/","img":"products/ariston-next-evo-11.webp","brand":"Ariston","series":"NEXT EVO","article":"3632297","price":34900,"stock":"order","stock_text":"Под заказ","can_buy":false,"specs":[{"name":"ШхГхВ","value":"330×180×550 мм"},{"name":"Мощность","value":"19 кВт"}],"props":{"heating":["Газовый"],"kind":["Проточный"],"mount":["Настенный"],"power":19,"width":330,"depth":180,"height":550}},{"id":"tesy-bilight-s-teploobmennikom-200","name":"Комбинированный водонагреватель TESY BiLight с теплообменником 200","url":"/product/tesy-bilight-s-teploobmennikom-200/","img":"products/tesy-bilight-s-teploobmennikom-150.webp","brand":"TESY","series":"BiLight с теплообменником","article":"GCVS 2004420 B11 TSRC","price":null,"stock":"order","stock_text":"Под заказ","can_buy":false,"specs":[{"name":"ШхГхВ","value":"440×467×1560 мм"},{"name":"Объём бака","value":"200 л"}],"props":{"heating":["Комбинированный"],"kind":["Накопительный"],"mount":["Настенный"],"power":2,"width":440,"depth":467,"height":1560}},{"id":"lemaks-alfa-20m","name":"Газовая колонка Лемакс Альфа-20М","url":"/product/lemaks-alfa-20m/","img":"products/lemaks-alfa-20m.webp","brand":"Лемакс","series":"Альфа","article":"125040","price":17900,"stock":"out","stock_text":"Нет в наличии","can_buy":false,"specs":[{"name":"ШхГхВ","value":"350×188×592 мм"},{"name":"Мощность","value":"20 кВт"}],"props":{"heating":["Газовый"],"kind":["Проточный"],"mount":["Настенный"],"power":20,"width":350,"depth":188,"height":592}}], [{"id":"gazovyy-kotel-ariston-argis-c-24-ff","name":"Газовый котёл Ariston ARGIS C 24 FF","url":"../product/gazovyy-kotel-ariston-argis-c-24-ff/","img":"products/argis-c-card.webp","brand":"Ariston","series":"ARGIS C","article":"3636151","price":59900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"400×315×700 мм"},{"name":"Мощность отопления","value":"24 кВт"}],"props":{"type":["Газовый"],"power":24,"mount":["Настенный"],"circuits":["Двухконтурный"],"chamber":["Закрытая"],"independent":["Нет"],"width":400,"depth":315,"height":700}},{"id":"gazovyy-kotel-ariston-argis-c-15-ff","name":"Газовый котёл Ariston ARGIS C 15 FF","url":"../product/gazovyy-kotel-ariston-argis-c-15-ff/","img":"products/argis-c-card.webp","brand":"Ariston","series":"ARGIS C","article":"3636149","price":53900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"400×315×700 мм"},{"name":"Мощность отопления","value":"15 кВт"}],"props":{"type":["Газовый"],"power":15,"mount":["Настенный"],"circuits":["Двухконтурный"],"chamber":["Закрытая"],"independent":["Нет"],"width":400,"depth":315,"height":700}},{"id":"gazovyy-kotel-lemaks-prime-v20","name":"Газовый котёл Лемакс PRIME-V20","url":"/product/gazovyy-kotel-lemaks-prime-v20/","img":"products/lemaks-prime-v.webp","brand":"Лемакс","series":"PRIME-V","article":"125280","price":38900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"400×300×700 мм"},{"name":"Мощность отопления","value":"20 кВт"}],"props":{"type":["Газовый"],"power":20,"mount":["Настенный"],"circuits":["Двухконтурный"],"chamber":["Закрытая"],"independent":["Нет"],"width":400,"depth":300,"height":700}},{"id":"gazovyy-kotel-lemaks-prime-v24","name":"Газовый котёл Лемакс PRIME-V24","url":"/product/gazovyy-kotel-lemaks-prime-v24/","img":"products/lemaks-prime-v.webp","brand":"Лемакс","series":"PRIME-V","article":"125281","price":41900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"400×300×700 мм"},{"name":"Мощность отопления","value":"24 кВт"}],"props":{"type":["Газовый"],"power":24,"mount":["Настенный"],"circuits":["Двухконтурный"],"chamber":["Закрытая"],"independent":["Нет"],"width":400,"depth":300,"height":700}},{"id":"gazovyy-kotel-lemaks-prime-v32","name":"Газовый котёл Лемакс PRIME-V32","url":"/product/gazovyy-kotel-lemaks-prime-v32/","img":"products/lemaks-prime-v.webp","brand":"Лемакс","series":"PRIME-V","article":"125283","price":49900,"stock":"in","stock_text":"В наличии","can_buy":true,"specs":[{"name":"ШхГхВ","value":"450×300×750 мм"},{"name":"Мощность отопления","value":"32 кВт"}],"props":{"type":["Газовый"],"power":32,"mount":["Настенный"],"circuits":["Двухконтурный"],"chamber":["Закрытая"],"independent":["Нет"],"width":450,"depth":300,"height":750}},{"id":"gazovyy-kotel-ariston-argis-c-10-ff","name":"Газовый котёл Ariston ARGIS C 10 FF","url":"../product/gazovyy-kotel-ariston-argis-c-10-ff/","img":"products/argis-c-card.webp","brand":"Ariston","series":"ARGIS C","article":"3636148","price":49900,"stock":"order","stock_text":"Под заказ","can_buy":false,"specs":[{"name":"ШхГхВ","value":"400×315×700 мм"},{"name":"Мощность отопления","value":"10 кВт"}],"props":{"type":["Газовый"],"power":10,"mount":["Настенный"],"circuits":["Двухконтурный"],"chamber":["Закрытая"],"independent":["Нет"],"width":400,"depth":315,"height":700}},{"id":"gazovyy-kotel-lemaks-prime-v24-ho","name":"Газовый котёл Лемакс PRIME-V24 HO","url":"/product/gazovyy-kotel-lemaks-prime-v24-ho/","img":"products/lemaks-prime-v.webp","brand":"Лемакс","series":"PRIME-V HO","article":"125291","price":null,"stock":"order","stock_text":"Под заказ","can_buy":false,"specs":[{"name":"ШхГхВ","value":"400×300×700 мм"},{"name":"Мощность отопления","value":"24 кВт"}],"props":{"type":["Газовый"],"power":24,"mount":["Настенный"],"circuits":["Одноконтурный"],"chamber":["Закрытая"],"independent":["Нет"],"width":400,"depth":300,"height":700}},{"id":"gazovyy-kotel-ariston-argis-c-18-ff","name":"Газовый котёл Ariston ARGIS C 18 FF","url":"../product/gazovyy-kotel-ariston-argis-c-18-ff/","img":"products/argis-c-card.webp","brand":"Ariston","series":"ARGIS C","article":"3636150","price":56900,"stock":"out","stock_text":"Нет в наличии","can_buy":false,"specs":[{"name":"ШхГхВ","value":"400×315×700 мм"},{"name":"Мощность отопления","value":"18 кВт"}],"props":{"type":["Газовый"],"power":18,"mount":["Настенный"],"circuits":["Двухконтурный"],"chamber":["Закрытая"],"independent":["Нет"],"width":400,"depth":315,"height":700}}]]</script>
+
+</main>
+
+<!-- ============ ПОДВАЛ ============ -->
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <nav class="footer-links" aria-label="Разделы сайта">
+      <div class="footer-links__col">
+        <h3 class="footer-links__title">Компания</h3>
+        <ul>
+          <li><a href="/catalog/">Каталог</a></li>
+          <li><a href="../#services">Услуги</a></li>
+          <li><a href="../about/">О компании</a></li>
+          <li><a href="../contacts/">Контакты</a></li>
+          <li><a href="../articles/">Статьи</a></li>
+        </ul>
+      </div>
+      <div class="footer-links__col">
+        <h3 class="footer-links__title">Покупателям</h3>
+        <ul>
+          <li><a href="../delivery/">Оплата и доставка</a></li>
+          <li><a href="../warranty/">Гарантии и возврат</a></li>
+        </ul>
+      </div>
+      <div class="footer-links__col">
+        <h3 class="footer-links__title">Информация</h3>
+        <ul>
+          <li><a href="../usloviya-raboty-dogovor-oferta/">Условия работы (договор-оферта)</a></li>
+          <li><a href="../privacy/">Политика обработки персональных данных</a></li>
+          <li><a href="../privacy-consent/">Согласие на обработку персональных данных</a></li>
+          <li><a href="../cookie/">Политика использования файлов cookie</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="footer-contacts">
+      <a class="logo logo--footer" href="../">
+        <img class="logo__img" src="../assets/img/logo.webp" width="220" height="46" alt="Акватех" loading="lazy">
+        <span class="logo__caption">Центр отопительного оборудования</span>
+      </a>
+      <ul class="footer-contacts__list">
+        <li><svg class="ico"><use href="#i-phone"/></svg><span><a href="tel:+79490060061">+7 (949) 006-006-1</a><br><a href="tel:+79890060061">+7 (989) 006-006-1</a></span></li>
+        <li class="footer-contacts__messengers">
+          <div class="messengers messengers--sm">
+  <a class="messenger" href="https://max.ru/" target="_blank" rel="noopener" aria-label="Написать в MAX"><svg><use href="#m-max"/></svg></a>
+  <a class="messenger" href="https://t.me/+79490060061" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg><use href="#m-telegram"/></svg></a>
+  <a class="messenger" href="https://wa.me/79490060061" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg><use href="#m-whatsapp"/></svg></a>
+  <a class="messenger" href="viber://chat?number=%2B79490060061" aria-label="Написать в Viber"><svg><use href="#m-viber"/></svg></a>
+</div>
+
+        </li>
+        <li><svg class="ico"><use href="#i-mail"/></svg><a href="mailto:akva.mariupol@gmail.com">akva.mariupol@gmail.com</a></li>
+        <li><svg class="ico"><use href="#i-pin"/></svg><span>г. Мариуполь, ул. Варганова, 10</span></li>
+        <li><svg class="ico"><use href="#i-pin"/></svg><span>г. Мариуполь, пр. Ильича, 142</span></li>
+        <li><svg class="ico"><use href="#i-pin"/></svg><span>г. Мариуполь, пр. Победы, 36/21</span></li>
+        <li><svg class="ico"><use href="#i-wrench"/></svg><span>Сервисный центр: г.&nbsp;Мариуполь, ул.&nbsp;Шевченко,&nbsp;23</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container site-footer__bottom">
+    <span>© Акватех, 2026</span>
+    <span>ИП Обозный Андрей Александрович</span>
+    <span>ИНН 615437713276</span>
+    <span>ОГРНИП 323930100209095</span>
+  </div>
+</footer>
+
+<!-- ============ МОБИЛЬНОЕ МЕНЮ ============ -->
+<dialog class="drawer" id="drawer" aria-label="Меню">
+  <div class="drawer__head">
+    <a class="logo" href="../"><img class="logo__img" src="../assets/img/logo.webp" width="150" height="32" alt="Акватех"></a>
+    <button class="icon-btn" type="button" aria-label="Закрыть меню" data-close-dialog autofocus><svg class="ico"><use href="#i-close"/></svg></button>
+  </div>
+  <div class="drawer__body">
+    <form class="search search--drawer" action="../search/" method="get" role="search">
+      <input class="search__input" type="search" name="q" placeholder="Название, бренд, артикул" aria-label="Поиск по каталогу">
+      <button class="search__btn" type="submit" aria-label="Найти"><svg class="ico"><use href="#i-search"/></svg></button>
+    </form>
+    <nav class="drawer-nav" aria-label="Меню">
+      <details class="drawer-nav__group">
+        <summary><svg class="ico"><use href="#i-grid"/></svg>Каталог<svg class="ico chev"><use href="#i-chevron-down"/></svg></summary>
+        <ul>
+          <li><a href="/category/kotly/">Котлы</a></li>
+          <li><a href="../category/vodonagrevateli/">Водонагреватели</a></li>
+          <li><a href="/category/kolonki-gazovye/">Газовые колонки</a></li>
+          <li><a href="/category/nasosnoe-oborudovanie/">Насосное оборудование</a></li>
+          <li><a href="/category/sistemy-filtratsii-vody/">Системы фильтрации воды</a></li>
+          <li><a href="/category/schetchiki-vody/">Счётчики воды</a></li>
+          <li><a href="/category/ibp-i-stabilizatory/">ИБП и стабилизаторы</a></li>
+          <li><a href="/category/rekuperatory/">Рекуператоры</a></li>
+          <li><a href="/category/termostaty/">Термостаты</a></li>
+          <li><a href="/category/solnechnye-paneli/">Солнечные панели</a></li>
+        </ul>
+      </details>
+      <details class="drawer-nav__group">
+        <summary><svg class="ico"><use href="#i-wrench"/></svg>Услуги<svg class="ico chev"><use href="#i-chevron-down"/></svg></summary>
+        <p class="drawer-nav__caption">Монтаж</p>
+        <ul>
+          <li><a href="/services/montazh-kotlov/">Монтаж котлов</a></li>
+          <li><a href="/services/montazh-vodonagrevateley/">Монтаж водонагревателей</a></li>
+          <li><a href="/services/montazh-gazovykh-kolonok/">Монтаж газовых колонок</a></li>
+          <li><a href="/services/montazh-nasosnogo-oborudovaniya/">Монтаж насосного оборудования</a></li>
+          <li><a href="/services/montazh-sistem-filtratsii-vody/">Монтаж систем фильтрации воды</a></li>
+        </ul>
+        <p class="drawer-nav__caption">Ремонт</p>
+        <ul>
+          <li><a href="../services/remont-kotlov/">Ремонт котлов</a></li>
+          <li><a href="/services/remont-vodonagrevateley/">Ремонт водонагревателей</a></li>
+          <li><a href="/services/remont-gazovykh-kolonok/">Ремонт газовых колонок</a></li>
+          <li><a href="/services/remont-nasosnogo-oborudovaniya/">Ремонт насосного оборудования</a></li>
+          <li><a href="/services/remont-sistem-filtratsii-vody/">Ремонт систем фильтрации воды</a></li>
+        </ul>
+        <p class="drawer-nav__caption">Обслуживание</p>
+        <ul>
+          <li><a href="/services/promyvka-kotlov/">Промывка котлов</a></li>
+          <li><a href="/services/promyvka-gazovykh-kolonok/">Промывка газовых колонок</a></li>
+          <li><a href="/services/promyvka-sistem-otopleniya/">Промывка систем отопления</a></li>
+        </ul>
+      </details>
+      <a class="drawer-nav__link" href="../about/">О компании</a>
+      <a class="drawer-nav__link" href="../delivery/">Доставка и оплата</a>
+      <a class="drawer-nav__link" href="../warranty/">Гарантии и возврат</a>
+      <a class="drawer-nav__link" href="../articles/">Статьи</a>
+      <a class="drawer-nav__link" href="../contacts/">Контакты</a>
+    </nav>
+    <div class="drawer__contacts">
+      <a class="drawer__phone" href="tel:+79490060061">+7 (949) 006-006-1</a>
+      <a class="drawer__phone" href="tel:+79890060061">+7 (989) 006-006-1</a>
+      <div class="messengers">
+  <a class="messenger" href="https://max.ru/" target="_blank" rel="noopener" aria-label="Написать в MAX"><svg><use href="#m-max"/></svg></a>
+  <a class="messenger" href="https://t.me/+79490060061" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg><use href="#m-telegram"/></svg></a>
+  <a class="messenger" href="https://wa.me/79490060061" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg><use href="#m-whatsapp"/></svg></a>
+  <a class="messenger" href="viber://chat?number=%2B79490060061" aria-label="Написать в Viber"><svg><use href="#m-viber"/></svg></a>
+</div>
+
+      <ul class="drawer__addresses">
+        <li><svg class="ico"><use href="#i-pin"/></svg>ул. Варганова, 10</li>
+        <li><svg class="ico"><use href="#i-pin"/></svg>пр. Ильича, 142</li>
+        <li><svg class="ico"><use href="#i-pin"/></svg>пр. Победы, 36/21</li>
+        <li><svg class="ico"><use href="#i-wrench"/></svg>ул. Шевченко, 23 — сервис</li>
+      </ul>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============ ВСПЛЫВАЮЩАЯ ФОРМА ============ -->
+<!-- Одна на все кнопки «Перезвоните мне» / «Вызвать мастера»: заголовок, текст кнопки и название заявки задают data-атрибуты кнопки -->
+<dialog class="modal" id="callback" aria-labelledby="callback-title">
+  <button class="icon-btn modal__close" type="button" aria-label="Закрыть" data-close-dialog autofocus><svg class="ico"><use href="#i-close"/></svg></button>
+  <h2 class="modal__title" id="callback-title">Перезвоним вам</h2>
+  <p class="modal__text">Оставьте имя и телефон — свяжемся с вами в ближайшее время.</p>
+  <form class="lead-form" action="/ajax/lead.php" method="post" novalidate data-lead-form data-success="Спасибо! Мы скоро свяжемся с вами.">
+  <input type="hidden" name="form" value="Перезвоните мне">
+  <div class="lead-form__fields lead-form__fields--stack">
+    <label class="field">
+      <span class="field__label">Ваше имя<span class="req">*</span></span>
+      <input class="field__input" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required>
+      <span class="field__error"></span>
+    </label>
+    <label class="field">
+      <span class="field__label">Ваш телефон<span class="req">*</span></span>
+      <input class="field__input" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required data-phone>
+      <span class="field__error"></span>
+    </label>
+  </div>
+  <label class="consent">
+    <input class="consent__input" type="checkbox" name="consent" required>
+    <span class="consent__box"><svg class="ico"><use href="#i-check"/></svg></span>
+    <span class="consent__text">Я прочитал(а) условия <a href="../privacy/">политики обработки персональных данных</a> и даю <a href="../privacy-consent/">согласие на обработку</a> своих персональных данных</span>
+  </label>
+  <span class="field__error field__error--consent"></span>
+  <button class="btn btn--primary btn--lg btn--block" type="submit"><span>Отправить</span><svg class="ico"><use href="#i-arrow-right"/></svg></button>
+  </form>
+
+</dialog>
+
+<div class="toast" role="status" aria-live="polite" hidden></div>
+
+</body>
+</html>
